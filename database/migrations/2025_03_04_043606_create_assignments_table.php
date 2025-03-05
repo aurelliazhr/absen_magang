@@ -13,8 +13,14 @@ return new class extends Migration
     {
         Schema::create('assignments', function (Blueprint $table) {
             $table->id();
-            //id_tugas
-            //id_siswa
+            $table->foreignId('id_tasks')->constrained(
+                table: 'tasks',
+                indexName: 'assignments_tasks_id'
+            );
+            $table->foreignId('id_users')->constrained(
+                table: 'users',
+                indexName: 'assignments_users_id'
+            );
             $table->string('judul');
             $table->string('file');
             $table->timestamps();

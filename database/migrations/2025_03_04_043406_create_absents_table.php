@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('absents', function (Blueprint $table) {
             $table->id();
-            //id_siswa
+            $table->foreignId('id_users')->constrained(
+                table: 'users',
+                indexName: 'absents_users_id'
+            );
             $table->timestamps();
             $table->enum('status', ['alpa', 'hadir', 'sakit', 'izin'])->default('alpa');
             $table->text('keterangan');
