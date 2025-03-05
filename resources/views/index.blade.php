@@ -37,6 +37,7 @@
             padding-right: 50px;
             font-size: 18px;
             font-weight: 500;
+            
         }
         
 
