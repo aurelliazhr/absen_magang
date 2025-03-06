@@ -13,7 +13,7 @@
     @forelse ($users as $u)
         <tr>
             <td>{{ $u->nama }}</td>
-            <a href="/pembimbing/lihat_siswa"><i class="fa-solid fa-circle-info"></i></a>
+            <a href="/pembimbing/lihat_siswas"><i class="fa-solid fa-circle-info"></i></a>
         </tr>
     @empty
         <div class="alert alert-danger">
