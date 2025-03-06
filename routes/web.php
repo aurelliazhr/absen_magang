@@ -15,7 +15,7 @@ Route::get('/admin/home', function () {
 Route::get('/admin/tambah_siswa', function () {
     return view('admin/tambah_siswa');
 });
-Route::get('/admin/data_siswa', function () {
+Route::get('admin/data_siswa', function () {
     return view('admin/data_siswa');
 });
 Route::get('/admin/edit_siswa', function () {
