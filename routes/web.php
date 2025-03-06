@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\GuruController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,20 +12,20 @@ Route::get('/', function () {
 //Admin
 Route::get('/admin/home', function () {
     return view('admin/home');
-});
-Route::get('/admin/tambah_siswa', function () {
-    return view('admin/tambah_siswa');
-});
+})->name('admin.home');
+Route::get('/admin/tambah_siswa', [AdminController::class, 'tambah_siswa'])->name('admin.tambah_siswa');
+Route::post('/admin/tambah_siswa-proses', [AdminController::class, 'tambah_siswa_proses'])->name('admin.tambah_siswa_proses');
+
 Route::get('/admin/data_siswa', function () {
     return view('admin/data_siswa');
 });
 Route::get('/admin/edit_siswa', function () {
     return view('admin/edit_siswa');
 });
-Route::get('/admin/data_siswa', function () {
+Route::get('/admin/lihat_siswa', function () {
     return view('admin/lihat_siswa');
 });
-Route::get('/admin/data_siswa', function () {
+Route::get('/admin/rekap_siswa', function () {
     return view('admin/rekap_siswa');
 });
 Route::get('/admin/tambah_guru', function () {
@@ -39,16 +40,10 @@ Route::get('/admin/edit_guru', function () {
 Route::get('/admin/lihat_guru', function () {
     return view('admin/lihat_guru');
 });
-Route::get('/admin/lihat_guru', function () {
-    return view('admin/lihat_guru');
-});
 
 //Pembimbing
-Route::get('/pembimbing/home', [GuruController::class, 'index']);
-Route::get('/pembimbing/lihat_siswa', [GuruController::class, 'lihat']);
-// Route::get('/pembimbing/lihat_siswa', function () {
-//     return view('pembimbing/lihat_siswa');
-// });
+Route::get('/pembimbing/home', [GuruController::class, 'index'])->name('guru.home');
+Route::get('/pembimbing/lihat_siswa/{id}', [GuruController::class, 'lihat'])->name('guru.lihat_siswa');
 Route::get('/pembimbing/profil', function () {
     return view('pembimbing/profil');
 });
