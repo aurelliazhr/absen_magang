@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('id_teachers')->constrained(
-                table: 'teachers',
-                indexName: 'users_teachers_id'
-            );
+            $table->string('email_teachers');
+
+            $table->foreign('email_teachers')->references('email')->on('teachers');
         });
     }
 

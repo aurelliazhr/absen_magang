@@ -8,6 +8,7 @@ use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -46,7 +47,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('siswa'),
             'asal_sekolah' => 'SMKN 2 Banjarmasin',
             'jenis_kelamin' => 'L',
-            'id_teachers' => '1'
+            'email_teachers' => '1'
         ]);
 
         User::create([
@@ -55,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('siswa'),
             'asal_sekolah' => 'SMKN 2 Banjarmasin',
             'jenis_kelamin' => 'P',
-            'id_teachers' => '2'
+            'email_teachers' => '2'
         ]);
     }
 }
