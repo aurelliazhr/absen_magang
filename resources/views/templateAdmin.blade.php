@@ -32,7 +32,7 @@
            </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container-fluid">
         @yield('admin')
     </div>
 </body>
