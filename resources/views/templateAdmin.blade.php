@@ -17,18 +17,18 @@
                  <img src="../assets/Logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
              </a>
              <li class="nav-item">
-                 <a class="nav-link active" href="admin/home.blade.php" style="color: white;">Home</a>
+                 <a class="nav-link active" href="home" style="color: white;">Home</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link active" href="admin/data_siswa.blade.php" style="color: white;">Siswa</a>
+                 <a class="nav-link active" href="data_siswa" style="color: white;">Siswa</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link active" href="admin/data_guru.blade.php" style="color: white;">Pembimbing</a>
+                 <a class="nav-link active" href="data_guru" style="color: white;">Pembimbing</a>
              </li>
            </ul>
            <ul class="nav justify-content-end">
              <li class="nav-item">
-                <a class="nav-link active" href="index.blade.php" style="color: white;">Logout</a>
+                <a class="nav-link active" href="/" style="color: white;">Logout</a>
              </li>
            </ul>
         </div>

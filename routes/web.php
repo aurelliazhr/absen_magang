@@ -10,36 +10,32 @@ Route::get('/', function () {
 });
 
 //Admin
-Route::get('/admin/home', function () {
-    return view('admin/home');
-<<<<<<< HEAD
-});
-Route::get('/admin/tambah_siswa', function () {
-    return view('admin/tambah_siswa');
-});
-Route::get('admin/data_siswa', function () {
-    return view('admin/data_siswa');
-});
-Route::get('/admin/edit_siswa', function () {
-    return view('admin/edit_siswa');
-});
-Route::get('/admin/lihat_siswa', function () {
-    return view('admin/lihat_siswa');
-});
-Route::get('/admin/rekap_siswa', function () {
-    return view('admin/rekap_siswa');
-});
-Route::get('/admin/tambah_guru', function () {
-    return view('admin/tambah_guru');
-});
-Route::get('/admin/data_guru', function () {
-    return view('admin/data_guru');
-});
-Route::get('/admin/edit_guru', function () {
-    return view('admin/edit_guru');
-});
-Route::get('/admin/lihat_guru', function () {
-    return view('admin/lihat_guru');
+Route::prefix('admin')->group(function () {
+    Route::get('/home', function () {
+        return view('admin/home');
+    })->name('admin.home');
+    Route::get('/tambah_siswa', [AdminController::class, 'tambah_siswa'])->name('admin.tambah_siswa');
+    Route::post('/tambah_siswa-proses', [AdminController::class, 'tambah_siswa_proses'])->name('admin.tambah_siswa_proses');
+    Route::get('/data_siswa', [AdminController::class, 'data_siswa'])->name('admin.data_siswa');
+    Route::get('/edit_siswa/{id}', [AdminController::class, 'edit_siswa'])->name('admin.edit_siswa');
+    Route::put('/edit_siswa_proses/{id}', [AdminController::class, 'edit_siswa_proses'])->name('admin.edit_siswa_proses');
+    Route::get('/lihat_siswa/{id}', [AdminController::class, 'lihat_siswa'])->name('admin.lihat_siswa');
+    Route::delete('/hapus_siswa/{id}', [AdminController::class, 'hapus_siswa'])->name('admin.hapus_siswa');
+    Route::get('/rekap_siswa', function () {
+        return view('admin/rekap_siswa');
+    });
+    Route::get('/tambah_guru', function () {
+        return view('admin/tambah_guru');
+    });
+    Route::get('/data_guru', function () {
+        return view('admin/data_guru');
+    });
+    Route::get('/edit_guru', function () {
+        return view('admin/edit_guru');
+    });
+    Route::get('/lihat_guru', function () {
+        return view('admin/lihat_guru');
+    });
 });
 
 //Pembimbing

@@ -18,13 +18,8 @@ return new class extends Migration
             $table->string('password');
             $table->string('asal_sekolah');
             $table->string('foto_profil')->nullable();
-            $table->enum('jenis_kelamin', ['L', 'P']);
+            $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->timestamps();
-            $table->string('email_teachers');
-
- 
-
-    $table->foreign('email_teachers')->references('email')->on('teachers');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

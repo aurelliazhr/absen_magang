@@ -46,8 +46,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'siswa1@gmail.com',
             'password' => Hash::make('siswa'),
             'asal_sekolah' => 'SMKN 2 Banjarmasin',
-            'jenis_kelamin' => 'L',
-            'email_teachers' => '1'
+            'jenis_kelamin' => 'Laki-Laki',
+            'id_teachers' => '1'
         ]);
 
         User::create([
@@ -55,8 +55,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'siswa2@gmail.com',
             'password' => Hash::make('siswa'),
             'asal_sekolah' => 'SMKN 2 Banjarmasin',
-            'jenis_kelamin' => 'P',
-            'email_teachers' => '2'
+            'jenis_kelamin' => 'Perempuan',
+            'id_teachers' => '2'
         ]);
     }
 }
