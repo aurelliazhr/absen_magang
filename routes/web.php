@@ -24,12 +24,13 @@ Route::prefix('admin')->group(function () {
     Route::get('/rekap_siswa', function () {
         return view('admin/rekap_siswa');
     });
-    Route::get('/tambah_guru', function () {
-        return view('admin/tambah_guru');
-    });
-    Route::get('/data_guru', function () {
-        return view('admin/data_guru');
-    });
+    // Route::get('/tambah_guru', function () {
+    //     return view('admin/tambah_guru');
+    // });
+    Route::get('/tambah_guru', [AdminController::class, 'tambah_guru'])->name('admin.tambah_guru');
+    Route::post('/tambah_guru-proses', [AdminController::class, 'tambah_guru_proses'])->name('admin.tambah_guru_proses');
+    
+    Route::get('/data_guru', [AdminController::class, 'data_guru'])->name('admin.data_guru');
     Route::get('/edit_guru', function () {
         return view('admin/edit_guru');
     });

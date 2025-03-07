@@ -5,11 +5,11 @@
         <div class="row text-center d-flex">
             <div class="col">
                 <a href="#" class="btn btn-success mt-4 text-nowrap"
-                   style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Rekap Data</a>
+                    style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Rekap Data</a>
             </div>
             <div class="col">
                 <a href="{{ route('admin.tambah_siswa') }}" class="btn btn-success mt-4 text-nowrap"
-                   style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Tambah Data</a>
+                    style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Tambah Data</a>
             </div>
         </div>
     </div>
@@ -21,7 +21,8 @@
                     <tr class="table-group-divider">
                         <td>{{ $u->nama }}</td>
                         <td>
-                            <a href="{{ route('admin.lihat_siswa', ['id' => $u->id] }}" class="active" style="color: #231F20">
+                            <a href="{{ route('admin.lihat_siswa', ['id' => $u->id]) }}" class="active"
+                                style="color: #231F20">
                                 <i class="bi bi-info-circle fs-4"></i>
                             </a>
                         </td>
@@ -31,7 +32,8 @@
                             </a>
                         </td>
                         <td>
-                            <form id="delete-form-{{ $u->id }}" action="{{ route('admin.hapus_siswa', $u->id) }}" method="POST" style="display:none;">
+                            <form id="delete-form-{{ $u->id }}" action="{{ route('admin.hapus_siswa', $u->id) }}"
+                                method="POST" style="display:none;">
                                 @csrf
                                 @method('DELETE')
                             </form>
@@ -72,7 +74,7 @@
                 }
             })
         }
-        </script>
-        
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 @endsection

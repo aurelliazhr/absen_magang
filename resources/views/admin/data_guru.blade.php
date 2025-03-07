@@ -11,28 +11,40 @@
 <div class="table-responsive container mt-5 d-flex justify-content-center">
     <table class="table text-center">
         <tbody>
-            <tr>
-                <th>Nama pembimbing 1</th>
-                <th><a href="#" class="active" style="color: #231F20"><i class="bi bi-info-circle fs-4"></i></a></th>
-                <th><a href="#" class="active" style="color: #595BD4;"><i class="bi bi-pencil-square fs-4"></i></a></th>
-                <th><a href="#" class="active" style="color: #D85B53;"><i class="bi bi-trash3 fs-4"></i></a></th>
-            </tr>
-        </tbody>
-        <tbody class="table-group-divider">
-            <tr>
-            <th>Nama pembimbing 2</th>
-            <th><a href="#" class="active" style="color: #231F20"><i class="bi bi-info-circle fs-4"></i></a></th>
-            <th><a href="#" class="active" style="color: #595BD4;"><i class="bi bi-pencil-square fs-4"></i></a></th>
-            <th><a href="#" class="active" style="color: #D85B53;"><i class="bi bi-trash3 fs-4"></i></a></th>
-            </tr>
-        </tbody>
-        <tbody class="table-group-divider">
-            <tr>
-            <th>Nama pembimbing 3</th>
-            <th><a href="#" class="active" style="color: #231F20"><i class="bi bi-info-circle fs-4"></i></a></th>
-            <th><a href="#" class="active" style="color: #595BD4;"><i class="bi bi-pencil-square fs-4"></i></a></th>
-            <th><a href="#" class="active" style="color: #D85B53;"><i class="bi bi-trash3 fs-4"></i></a></th>
-            </tr>
+            @forelse ($teachers as $t)
+                    <tr class="table-group-divider">
+                        <td>{{ $t->nama }}</td>
+                        <td>
+                            <a href="{{ route('admin.lihat_siswa', ['id' => $t->id]) }}" class="active"
+                                style="color: #231F20">
+                                <i class="bi bi-info-circle fs-4"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <a href="{{ route('admin.edit_siswa', $t->id) }}" class="active" style="color: #595BD4;">
+                                <i class="bi bi-pencil-square fs-4"></i>
+                            </a>
+                        </td>
+                        <td>
+                            <form id="delete-form-{{ $t->id }}" action="{{ route('admin.hapus_siswa', $t->id) }}"
+                                method="POST" style="display:none;">
+                                @csrf
+                                @method('DELETE')
+                            </form>
+                            <button class="button" onclick="confirmDelete({{ $t->id }})">
+                                <a href="#" class="active" style="color: #D85B53;">
+                                    <i class="bi bi-trash3 fs-4"></i>
+                                </a>
+                            </button>
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="4">
+                            <div class="alert alert-danger m-0">Data Pembimbing Belum Tersedia</div>
+                        </td>
+                    </tr>
+                @endforelse
         </tbody>
     </table>
 </div>

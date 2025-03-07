@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tambah siswa</title>
 </head>
-
 <body>
     <form action="{{ route('admin.tambah_siswa_proses') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -45,12 +43,11 @@
             @foreach ($teachers as $teacher)
                 <option value="{{ $teacher->id }}">{{ $teacher->nama }}</option>
             @endforeach
-        </select>
+        </select>        
         @error('id_teachers')
             <small>Email Pembimbing harus diisi</small>
         @enderror
         <button type="submit">Tambah Data</button>
     </form>
 </body>
-
 </html>

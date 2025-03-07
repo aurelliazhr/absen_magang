@@ -37,7 +37,8 @@
                 <select id="id_teachers" name="id_teachers" required class="form-control form-control-lg">
                     <option value="" disabled>Nama Pembimbing:</option>
                     @foreach ($teachers as $teacher)
-                        <option value="{{ $teacher->id }}" {{ old('id_teachers', $user->id_teachers) == $teacher->id ? 'selected' : '' }}>
+                        <option value="{{ $teacher->id }}"
+                            {{ old('id_teachers', $user->id_teachers) == $teacher->id ? 'selected' : '' }}>
                             {{ $teacher->nama }}
                         </option>
                     @endforeach
