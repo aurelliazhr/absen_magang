@@ -10,7 +10,6 @@ Route::get('/', function () {
 });
 
 //Admin
-<<<<<<< HEAD
 Route::prefix('admin')->group(function () {
     Route::get('/home', function () {
         return view('admin/home');
@@ -37,37 +36,6 @@ Route::prefix('admin')->group(function () {
     Route::get('/lihat_guru', function () {
         return view('admin/lihat_guru');
     });
-=======
-Route::get('/admin/home', function () {
-    return view('admin/home');
-});
-Route::get('/admin/tambah_siswa', function () {
-    return view('admin/tambah_siswa');
-});
-Route::get('admin/data_siswa', function () {
-    return view('admin/data_siswa');
-});
-Route::get('/admin/edit_siswa', function () {
-    return view('admin/edit_siswa');
-});
-Route::get('/admin/lihat_siswa', function () {
-    return view('admin/lihat_siswa');
-});
-Route::get('/admin/rekap_siswa', function () {
-    return view('admin/rekap_siswa');
-});
-Route::get('/admin/tambah_guru', function () {
-    return view('admin/tambah_guru');
-});
-Route::get('/admin/data_guru', function () {
-    return view('admin/data_guru');
-});
-Route::get('/admin/edit_guru', function () {
-    return view('admin/edit_guru');
-});
-Route::get('/admin/lihat_guru', function () {
-    return view('admin/lihat_guru');
->>>>>>> 529d651b4976617793b50e5869830c187af01cb7
 });
 
 //Pembimbing
