@@ -12,19 +12,11 @@ Route::get('/', function () {
 //Admin
 Route::get('/admin/home', function () {
     return view('admin/home');
-<<<<<<< HEAD
 });
 Route::get('/admin/tambah_siswa', function () {
     return view('admin/tambah_siswa');
 });
 Route::get('admin/data_siswa', function () {
-=======
-})->name('admin.home');
-Route::get('/admin/tambah_siswa', [AdminController::class, 'tambah_siswa'])->name('admin.tambah_siswa');
-Route::post('/admin/tambah_siswa-proses', [AdminController::class, 'tambah_siswa_proses'])->name('admin.tambah_siswa_proses');
-
-Route::get('/admin/data_siswa', function () {
->>>>>>> 26da6e8ef93e2886427ed854d7a3e02b05f4f577
     return view('admin/data_siswa');
 });
 Route::get('/admin/edit_siswa', function () {
