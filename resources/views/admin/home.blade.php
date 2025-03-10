@@ -1,21 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
 <style>
-  .chart-container {
-    width: 50%;
-    height: 50%;
-    margin: auto;
-  }
+    .card-body{
+        position: relative;
+        height: 500px;
+        width: 100%;
+    }
+    canvas{
+        width: 100% !important;
+        height: 500px !important;
+    }
 </style>
-@extends('templateAdmin')
-
-@section('admin')
-
-<!-- <div class="container mx-auto mb-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6"> -->
-    <div class="bg-white shadow rounded p-6 text-center border border-blue-500">
-        <h2 class="text-xl font-bold text-black-800">Guru</h2>
+<nav class="navbar navbar-expand-lg" style="background-color: #1D0CD1">
+        <div class="container-fluid">
+           <ul class="nav justify-content-start">
+             <a href="#" class="navbar-brand" style="cursor: default;">
+                 <img src="../assets/Logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+             </a>
+             <li class="nav-item">
+                 <a class="nav-link active" href="home" style="color: white;">Home</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link active" href="data_siswa" style="color: white;">Siswa</a>
+             </li>
+             <li class="nav-item">
+                 <a class="nav-link active" href="data_guru" style="color: white;">Pembimbing</a>
+             </li>
+           </ul>
+           <ul class="nav justify-content-end">
+             <li class="nav-item">
+                <a class="nav-link active" href="/" style="color: white;">Logout</a>
+             </li>
+           </ul>
+        </div>
+</nav>
+    <div class="container mt-5">
+     <h2 class="text-center">bar chart</h2>
+     <div class="card">
+         <div class="card-body">
+             <div class="chart-container" style="width: 100%; height: 500px">
+               <canvas id="myChart"></canvas>
+             </div>
+         </div>
+     </div>
     </div>
-    <div class="bg-white shadow rounded p-6 text-center border border-blue-500" style="background-color: green;">
-        <h2 class="text-xl font-bold text-black-800">Siswa</h2>
-    </div>
-<!-- </div> -->
 
-@endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let chartInstance;
+
+        // function createChart(){
+        //     const ctx = documen.getElementById('myChart').getContext('2d');
+
+        //     if (chartInstance) {
+        //         chartInstance.destroy();
+        //     }
+        // }
+
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ["Pembimbing","Siswa"],
+                datasets: [{
+                    label: 'total user',
+                    data: [20, 50],
+                    backgroundColor: ['rgba(237, 206, 46, 1)','rgba(29, 240, 121, 0.8)'],
+                    borderColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    },
+                    x: {
+                        ticks: {
+                            padding: 15
+                        }
+                    }
+                },
+                // plugins: {
+                //     legend: {
+                //         labels: {
+                //             usePointStyle: true,
+                //             boxWidth: 20,
+                //             boxHeight: 20
+                //         }
+                //     }
+                // }
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

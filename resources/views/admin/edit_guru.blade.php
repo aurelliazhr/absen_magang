@@ -24,7 +24,7 @@
     <br>
 </div>
 <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 10%;">
-    <button type="button" class="btn btn-light fw-bold" id="edit">Edit</button>
+    <a href="{{route ('admin.home')}}" type="button" class="btn btn-light fw-bold" id="edit">Edit</a>
 </div>
 </div>
 @endsection
