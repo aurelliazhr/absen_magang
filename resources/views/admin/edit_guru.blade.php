@@ -1,12 +1,13 @@
 <style>
-    #edit{
+    #edit {
         background-color: #1D0CD1;
         color: white;
         width: 276px;
         height: 59px;
         font-size: 27px;
     }
-    #Pform{
+
+    #Pform {
         margin-top: 6%;
     }
 </style>
