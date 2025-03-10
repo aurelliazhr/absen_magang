@@ -10,6 +10,7 @@
     <p>Foto Profil: {{ $user->foto_profil }}</p>
     <p>Nama: {{ $user->nama }}</p>
     <p>Email: {{ $user->email }}</p>
+    <p>Jenis Kelamin: {{ $user->jenis_kelamin }}</p>
     <p>Asal Sekolah: {{ $user->asal_sekolah }}</p>
 
     <a href="{{ route('guru.home') }}">Kembali</a>

@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('templateGuru')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pembimbing</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+@section('guru')
 
-<body>
+
     @forelse ($users as $u)
         <tr>
             <td>{{ $u->nama }}</td>
-            <a href="{{ route('guru.lihat_siswa', $u->id) }}"><i class="fa-solid fa-circle-info"></i></a>
+            <td>
+                <a href="{{ route('guru.lihat_siswa', ['id' => $u->id]) }}" class="active"
+                    style="color: #231F20">
+                    <i class="bi bi-info-circle fs-4"></i>
+                </a>
+            </td>
         </tr>
     @empty
         <div class="alert alert-danger">
             Data Siswa Belum Tersedia
         </div>
     @endforelse
-</body>
 
-</html>
+@endsection

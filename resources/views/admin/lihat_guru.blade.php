@@ -19,11 +19,9 @@
 <div class="container d-flex justify-content-center" id="Gform">
   <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara" style="width: 300px;">
   <div class="col-md-6 ms-5 mt-5">
-      <input type="text" class="form-control form-control-lg h-59" placeholder="Nama pembimbing" style="border-color: black;" id="nama">
+      <input type="text" class="form-control form-control-lg h-59" value="{{ $teacher->nama }}" placeholder="Nama Pembimbing" style="border-color: black;" id="nama">
       <br>
-      <input type="email" class="form-control form-control-lg h-59" placeholder="pembimbing@gmail.com" style="border-color: black;" id="email">
-      <br>
-      <input type="password" class="form-control form-control-lg h-59" placeholder="masukkan kata sandi" style="border-color: black;" id="pass">
+      <input type="email" class="form-control form-control-lg h-59" value="{{ $teacher->email }}" placeholder="Email Pembimbing" style="border-color: black;" id="email">
       <br>
       <div class="position-relative text-center" style="width: 350px;">
        <button type="button" class="btn btn-light position-absolute pull-right" id="btnM">Kembali</button>
