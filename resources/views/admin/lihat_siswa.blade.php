@@ -7,10 +7,6 @@
         font-weight: bold;
         font-size: 20px;
     }
-
-    /* #nama{
-    
-  } */
 </style>
 @extends('templateAdmin')
 
@@ -35,7 +31,7 @@
                 class="form-control form-control-lg h-59" style="border-color: black;" readonly>
             <br>
             <div class="position-relative text-center" style="width: 350px;">
-                <a href="{{route('admin.data_siswa')}}" class="btn btn-light position-absolute pull-right" id="btnM">Kembali</button>
+                <a href="{{route('admin.data_siswa')}}" class="btn btn-light position-absolute pull-right" id="btnM">Kembali</a>
             </div>
         </div>
     </div>

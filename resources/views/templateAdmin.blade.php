@@ -14,7 +14,7 @@
     <nav class="navbar navbar-expand-lg" style="background-color: #1D0CD1">
         <div class="container-fluid">
            <ul class="nav justify-content-start">
-             <a href="#" class="navbar-brand" style="cursor: default;">
+             <a href="{{ route('admin.home') }}" class="navbar-brand" style="cursor: default;">
                  <img src="../assets/Logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
              </a>
              <li class="nav-item">

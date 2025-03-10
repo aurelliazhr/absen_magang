@@ -47,7 +47,7 @@
         </div>
 </nav>
     <div class="container mt-5">
-     <h2 class="text-center">bar chart</h2>
+     <h2 class="text-center">User chart</h2>
      <div class="card">
          <div class="card-body">
              <div class="chart-container" style="width: 100%; height: 500px">
@@ -76,7 +76,7 @@
                 labels: ["Pembimbing","Siswa"],
                 datasets: [{
                     label: 'total user',
-                    data: [20, 50],
+                    data: [37, 50],
                     backgroundColor: ['rgba(237, 206, 46, 1)','rgba(29, 240, 121, 0.8)'],
                     borderColor: ['rgba(255, 99, 132, 1)','rgba(54, 162, 235, 1)'],
                     borderWidth: 1
