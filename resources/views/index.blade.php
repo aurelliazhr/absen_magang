@@ -46,14 +46,17 @@
     </style>
 </head>
 <body>
+    <form action="login" method="POST">
+        @csrf
     <img src="/assets/logo.png" class="rounded float-start" id="logo">
     <h1 class="fw-bold text-center" id="judul">Absen Magang</h1>
     <div class="col-md-6" id="form">
-        <input type="email" class="form-control form-control-lg" placeholder="masukkan email" id="email">
+        <input type="email" name="email" class="form-control form-control-lg" placeholder="masukkan email" id="email" required>
         <br>
-        <input type="password" id="pass" class="form-control form-control-lg" placeholder="masukkan kata sandi">
+        <input type="password" name="password" id="pass" class="form-control form-control-lg" placeholder="masukkan kata sandi" required>
         <br>
-        <button type="button" class="btn btn-light" id="masuk">Masuk</button>
+        <button type="submit" class="btn btn-light" id="masuk">Masuk</button>
     </div>
+</form>
 </body>
 </html>

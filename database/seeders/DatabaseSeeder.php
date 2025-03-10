@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Admin;
+use App\Models\Task;
 use App\Models\Teacher;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -57,6 +58,20 @@ class DatabaseSeeder extends Seeder
             'asal_sekolah' => 'SMKN 2 Banjarmasin',
             'jenis_kelamin' => 'Perempuan',
             'id_teachers' => '2'
+        ]);
+
+        Task::create([
+            'id_teachers' => '1',
+            'judul' => 'Tugas Pertama',
+            'deskripsi' => 'Ini adalah tugas pertama. Silahkan kerjakan!',
+            'batas_pengumpulan' => '2025-03-31 12:00:00 ' 
+        ]);
+
+        Task::create([
+            'id_teachers' => '2',
+            'judul' => 'Tugas Kedua',
+            'deskripsi' => 'Ini adalah tugas kedua, silahkan kerjakan!',
+            'batas_pengumpulan' => '2025-03-31 12:00:00 ' 
         ]);
     }
 }

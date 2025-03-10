@@ -1,13 +1,13 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
 use Illuminate\Support\Facades\Route;
 
 //Login
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'store']);
 
 //Admin
 Route::prefix('admin')->group(function () {
@@ -43,16 +43,16 @@ Route::prefix('pembimbing')->group(function () {
     Route::get('/profil', function () {
         return view('pembimbing/profil');
     });
-    // Route::get('/tugas', function () {
-    //     return view('pembimbing/tugas');
-    // });
     Route::get('/tugas', [GuruController::class, 'tugas'])->name('guru.tugas');
-    Route::get('/tambah_tugas', function () {
-        return view('pembimbing/tambah_tugas');
-    });
-    Route::get('/edit_tugas', function () {
-        return view('pembimbing/edit_tugas');
-    });
+    Route::get('/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
+    // Route::get('/tambah_tugas', function () {
+    //     return view('pembimbing/tambah_tugas');
+    // });
+    Route::get('/tambah_tugas', [GuruController::class, 'tambah_tugas'])->name('guru.tambah_tugas');
+    Route::post('/tambah_tugas-proses', [GuruController::class, 'tambah_tugas_proses'])->name('guru.tambah_tugas_proses');
+    Route::get('/edit_tugas/{id}', [GuruController::class, 'edit_tugas'])->name('guru.edit_tugas');
+    Route::put('/edit_tugas_proses/{id}', [GuruController::class, 'edit_tugas_proses'])->name('guru.edit_tugas_proses');
+    Route::delete('/hapus_tugas/{id}', [GuruController::class, 'hapus_tugas'])->name('guru.hapus_tugas');
     Route::get('/pengumpulan', function () {
         return view('pembimbing/pengumpulan');
     });
