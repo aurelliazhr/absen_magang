@@ -32,7 +32,7 @@
            </ul>
            <ul class="nav justify-content-end">
              <li class="nav-item">
-                <a class="nav-link active" href="index.blade.php" style="color: white;">Logout</a>
+                <a class="nav-link active" href="{{route('logout')}}" style="color: white;">Logout</a>
              </li>
            </ul>
         </div>
