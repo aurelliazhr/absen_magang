@@ -23,6 +23,10 @@ class AuthController extends Controller
             return redirect()->intended('siswa/home');
         }
 
+        if(!Auth::guard('admin')->check()) {
+            return redirect('/admin/home');
+        }
+
         return back()->withErrors(['Akun tidak  terdaftar, silahkan coba lagi.'])->onlyInput('email');
     }
 
