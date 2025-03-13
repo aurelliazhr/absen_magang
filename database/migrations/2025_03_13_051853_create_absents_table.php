@@ -19,8 +19,9 @@ return new class extends Migration
             );
             $table->timestamps();
             $table->enum('status', ['alpa', 'hadir', 'sakit', 'izin'])->default('alpa');
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->enum('kategori', ['datang', 'pulang'])->default('datang');
+
         });
     }
 

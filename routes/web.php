@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GuruController;
+use App\Http\Controllers\SiswaController;
 use Illuminate\Support\Facades\Route;
 
 //Login
@@ -69,31 +70,34 @@ Route::prefix('pembimbing')->group(function () {
 
 //Siswa
 Route::middleware('auth')->group(function () {
-    Route::get('/siswa/home', function () {
-        return view('siswa/home');
-    });
-    Route::get('/siswa/profil', function () {
-        return view('siswa/profil');
-    });
-    Route::get('/siswa/absen', function () {
-        return view('siswa/absen');
-    });
-    Route::get('/siswa/absen_datang', function () {
-        return view('siswa/absen_datang');
-    });
-    Route::get('/siswa/absen_pulang', function () {
-        return view('siswa/absen_pulang');
-    });
-    Route::get('/siswa/tugas', function () {
-        return view('siswa/tugas');
-    });
-    Route::get('/siswa/detail_tugas', function () {
-        return view('siswa/detail_tugas');
-    });
-    Route::get('/siswa/pengumpulan', function () {
-        return view('siswa/pengumpulan');
-    });
-    Route::get('/siswa/nilai', function () {
-        return view('siswa/nilai');
+    Route::prefix('siswa')->group(function () {
+        Route::get('/home', [SiswaController::class, 'home'])->name('siswa.home');
+        Route::post('/absen_datang', [SiswaController::class, 'absen_datang'])->name('siswa.absen_datang');
+        Route::post('/absen_pulang', [SiswaController::class, 'absen_pulang'])->name('siswa.absen_pulang');
+
+        Route::get('/siswa/profil', function () {
+            return view('siswa/profil');
+        });
+        Route::get('/siswa/absen', function () {
+            return view('siswa/absen');
+        });
+        Route::get('/siswa/absen_datang', function () {
+            return view('siswa/absen_datang');
+        });
+        Route::get('/siswa/absen_pulang', function () {
+            return view('siswa/absen_pulang');
+        });
+        Route::get('/siswa/tugas', function () {
+            return view('siswa/tugas');
+        });
+        Route::get('/siswa/detail_tugas', function () {
+            return view('siswa/detail_tugas');
+        });
+        Route::get('/siswa/pengumpulan', function () {
+            return view('siswa/pengumpulan');
+        });
+        Route::get('/siswa/nilai', function () {
+            return view('siswa/nilai');
+        });
     });
 });
