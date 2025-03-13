@@ -4,7 +4,7 @@
     <form action="{{ route('guru.edit_tugas_proses', ['id' => $task->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <h1 class="fw-bold text-center mt-4">Edit Data Siswa</h1>
+        <h1 class="fw-bold text-center mt-4">Edit tugas</h1>
 
         <div class="container d-flex justify-content-center mt-5 align-items-center">
             <div class="col-md-6" id="form">
@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="fixed-bottom d-flex justify-content-center">
+        <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
             <button type="submit" class="btn btn-light fw-bold" id="masuk">Edit</button>
         </div>
     </form>

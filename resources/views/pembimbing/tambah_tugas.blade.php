@@ -8,11 +8,11 @@
     }
 
     #judul {
-        margin-top: 5%;
+        margin-top: 3%;
     }
 
     #Gform {
-        margin-top: 5%;
+        margin-top: 2%;
     }
 </style>
 @extends('templateGuru')
@@ -37,26 +37,22 @@
                 @enderror
                 <br>
 
-                <textarea id="deskripsi" name="deskripsi" placeholder="Deskripsi Tugas" class="form-control form-control-lg"
-                    style="border-color: black;">
-                </textarea>
+                <textarea id="deskripsi" name="deskripsi" placeholder="Deskripsi Tugas" class="form-control form-control-lg" style="border-color: black;"></textarea>
                 @error('deskripsi')
                     <small>Deskripsi tugas harus diisi</small>
                 @enderror
                 <br>
-
                 <input type="file" id="file" name="file" placeholder="File Tugas"
                     class="form-control form-control-lg" style="border-color: black;">
                 <br>
-            </div>
-
-            <input type="datetime-local" id="batas_pengumpulan" name="batas_pengumpulan" placeholder="Batas Pengumpulan Tugas"
+                <input type="datetime-local" id="batas_pengumpulan" name="batas_pengumpulan" placeholder="Batas Pengumpulan Tugas"
                     class="form-control form-control-lg" style="border-color: black;">
                 @error('batas_pengumpulan')
                     <small>Batas Pengumpulan tugas harus diisi</small>
                 @enderror
                 <br>
-            <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 10%;">
+            </div>
+            <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
                 <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
             </div>
         </div>
