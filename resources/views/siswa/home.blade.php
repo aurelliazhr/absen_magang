@@ -31,6 +31,11 @@
     #history {
         color: red;
     }
+    #kotak{
+        color: red;
+    }
+    
+
 </style>
 @extends('templateSiswa')
 
@@ -120,7 +125,7 @@
             </form>
         @endif
         <div class="col-lg-6">
-            <h3 class="text-center fw-bold">Riwayat Kegiatan</h3>
+            <h3 class="text-center fw-bold"><i class="bi bi-square-fill fs-4" id="kotak"></i> Riwayat Kegiatan</h3>
             <div class="mt-3 p-3" style="height: 300px; overflow-y: auto;">
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item fw-bold" id="history"><i class="bi bi-clock"
