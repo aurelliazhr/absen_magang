@@ -47,7 +47,7 @@
             </div>
         </div>
 
-        <div class="fixed-bottom d-flex justify-content-center">
+        <div class="container-lg d-flex justify-content-center">
             <button type="submit" class="btn btn-light fw-bold" id="masuk">Edit</button>
         </div>
     </form>

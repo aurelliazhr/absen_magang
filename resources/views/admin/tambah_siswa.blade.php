@@ -65,7 +65,7 @@
         <small>Email Pembimbing harus diisi</small>
        @enderror
      </div>
-     <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 3%;">
+     <div class="container-lg d-flex justify-content-center">
             <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
      </div>
     </div>

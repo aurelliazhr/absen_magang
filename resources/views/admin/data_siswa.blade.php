@@ -4,7 +4,7 @@
     <div class="container-fluid px-4 d-flex justify-content-center" id="container1" style="text-align:center;">
         <div class="row text-center d-flex">
             <div class="col">
-                <a href="#" class="btn btn-success mt-4 text-nowrap"
+                <a href="{{route('admin.rekap_siswa')}}" class="btn btn-success mt-4 text-nowrap"
                     style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Rekap Data</a>
             </div>
             <div class="col">

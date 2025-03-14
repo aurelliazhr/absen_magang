@@ -18,16 +18,13 @@
                  <img src="../assets/Logo.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
              </a>
              <li class="nav-item">
-                 <a class="nav-link active" href="siswa/home.blade.php" style="color: white;">Home</a>
+                 <a class="nav-link active" href="{{route('siswa.home')}}" style="color: white;">Home</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link active" href="siswa/profil.blade.php" style="color: white;">Profil</a>
+                 <a class="nav-link active" href="{{route('siswa.profil')}}" style="color: white;">Profil</a>
              </li>
              <li class="nav-item">
-                 <a class="nav-link active" href="siswa/absen.blade.php" style="color: white;">Absen</a>
-             </li>
-             <li class="nav-item">
-                 <a class="nav-link active" href="siswa/tugas.blade.php" style="color: white;">Tugas</a>
+                 <a class="nav-link active" href="{{route('siswa.tugas')}}" style="color: white;">Tugas</a>
              </li>
            </ul>
            <ul class="nav justify-content-end">

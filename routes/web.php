@@ -18,9 +18,10 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('admin')->group(function () {
     Route::prefix('admin')->group(function () {
 
-        Route::get('/home', function () {
-            return view('admin/home');
-        })->name('admin.home');
+        // Route::get('/home', function () {
+        //     return view('admin/home');
+        // })->name('admin.home');
+        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
         Route::get('/tambah_siswa', [AdminController::class, 'tambah_siswa'])->name('admin.tambah_siswa');
         Route::post('/tambah_siswa-proses', [AdminController::class, 'tambah_siswa_proses'])->name('admin.tambah_siswa_proses');
         Route::get('/data_siswa', [AdminController::class, 'data_siswa'])->name('admin.data_siswa');
@@ -30,7 +31,7 @@ Route::middleware('admin')->group(function () {
         Route::delete('/hapus_siswa/{id}', [AdminController::class, 'hapus_siswa'])->name('admin.hapus_siswa');
         Route::get('/rekap_siswa', function () {
             return view('admin/rekap_siswa');
-        });
+        })->name('admin.rekap_siswa');
 
 
         Route::get('/tambah_guru', [AdminController::class, 'tambah_guru'])->name('admin.tambah_guru');
@@ -74,22 +75,12 @@ Route::middleware('auth')->group(function () {
         Route::get('/home', [SiswaController::class, 'home'])->name('siswa.home');
         Route::post('/absen_datang', [SiswaController::class, 'absen_datang'])->name('siswa.absen_datang');
         Route::post('/absen_pulang', [SiswaController::class, 'absen_pulang'])->name('siswa.absen_pulang');
+        Route::get('/profil', [SiswaController::class, 'profil'])->name('siswa.profil');
+        Route::post('/profil_proses', [SiswaController::class, 'profil_proses'])->name('siswa.profil_proses');
 
-        Route::get('/siswa/profil', function () {
-            return view('siswa/profil');
-        });
-        Route::get('/siswa/absen', function () {
-            return view('siswa/absen');
-        });
-        Route::get('/siswa/absen_datang', function () {
-            return view('siswa/absen_datang');
-        });
-        Route::get('/siswa/absen_pulang', function () {
-            return view('siswa/absen_pulang');
-        });
         Route::get('/siswa/tugas', function () {
             return view('siswa/tugas');
-        });
+        })->name('siswa.tugas');
         Route::get('/siswa/detail_tugas', function () {
             return view('siswa/detail_tugas');
         });

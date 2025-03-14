@@ -24,7 +24,7 @@
       <input type="email" class="form-control form-control-lg h-59" value="{{ $teacher->email }}" placeholder="Email Pembimbing" style="border-color: black;" id="email">
       <br>
       <div class="position-relative text-center" style="width: 350px;">
-       <button type="button" class="btn btn-light position-absolute pull-right" id="btnM">Kembali</button>
+       <a href="{{route ('admin.data_guru')}}" type="button" class="btn btn-light position-absolute pull-right" id="btnM" >Kembali</a>
       </div>
   </div>
 </div>

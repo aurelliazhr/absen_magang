@@ -13,6 +13,13 @@ class AdminController extends Controller
 {
 
     // CRUD SISWA
+
+    function home() {
+        $teachers=Teacher::all();
+        $users=User::all();
+        return view ('admin.home', compact('teachers', 'users'));    
+    }
+
     public function data_siswa()
     {
         $users = User::with('teacher')->orderBy('nama', 'asc')->paginate(10);
