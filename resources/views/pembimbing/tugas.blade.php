@@ -1,9 +1,17 @@
+<style>
+    #Tbtn{
+        width: 100%;
+        height: 87%;
+        font-weight: bold;
+        font-size: 28px;
+    }
+</style>
 @extends('templateGuru')
 @section('guru')
     <div class="container-fluid px-4 td-md-flex justify-content-md-center" style="text-align:center; display:flex;">
-        <div class="row text-center" style="display: flex;">
-            <div class="col">
-             <a href="{{route('guru.tambah_tugas')}}" type="button" class="btn btn-success mt-4 text-nowrap" style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 605px; --bs-btn-font-size: 30px;">Tambah Tugas</a>
+        <div class="container text-center" style="display: flex;">
+            <div class="col-md">
+             <a href="{{route('guru.tambah_tugas')}}" type="button" class="btn btn-success mt-4 text-nowrap" id="Tbtn">Tambah Tugas</a>
             </div>
         </div>
     </div>
@@ -17,6 +25,9 @@
                         {{-- <a href="{{route('pembimbing.detail', ['id' => $t->id])}}">
                             <i class="bi bi-file-earmark-check"></i>
                         </a> --}}
+                    </td>
+                    <td>
+                        <a href="" class="active" style="color: #231F20;"><i class="bi bi-file-earmark-text fs-4"></i></a>
                     </td>
                     <td>
                         <a href="{{ route('guru.detail', ['id' => $tsk->id]) }}" class="active"

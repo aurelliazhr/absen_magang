@@ -2,15 +2,15 @@
     #simpan {
         background-color: #1D0CD1;
         color: white;
-        width: 15%;
-        height: 59px;
+        width: 50%;
+        height: 8%;
         font-size: 27px;
     }
     #back{
         background-color: #1D0CD1;
         color: white;
-        width: 15%;
-        height: 59px;
+        width: 50%;
+        height: 8%;
         font-size: 27px;
     }
 
@@ -27,7 +27,7 @@
 
 @section('guru')
 <h1 class="fw-bold text-center mt-3">Detail tugas</h1>
-<div class="container d-flex justify-content-center align-items-center" id="Pform">
+<div class="container-fluid d-flex justify-content-center align-items-center" id="Pform">
 <div class="col-md-6" id="form">
     <input type="text" class="form-control form-control-lg" placeholder="Nama siswa" id="nama" style="border-color: black;">
     <br>
@@ -41,10 +41,10 @@
     <br>
     <input type="text" class="form-control form-control-lg" placeholder="Nilai" style="border-color: black;">
     <br>
-</div>
-<div class="fixed-bottom d-flex justify-content-center gap-4" style="margin-bottom: 2%;" id="Bform">
-    <a href="#" type="button" class="btn btn-light fw-bold" id="simpan">Simpan</a>
-    <a href="#" type="button" class="btn btn-light fw-bold" id="back">Kembali</a>
+    <div class="container-md d-flex justify-content-between align-items-center text-center gap-4" style="margin-bottom: 2%;" id="Bform">
+     <button class="btn btn-light fw-bold" id="simpan">Simpan</button>
+     <a href="#" type="button" class="btn btn-light fw-bold" id="back">Kembali</a>
+    </div>
 </div>
 </div>
 @endsection

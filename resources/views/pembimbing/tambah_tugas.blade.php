@@ -51,9 +51,9 @@
                     <small>Batas Pengumpulan tugas harus diisi</small>
                 @enderror
                 <br>
-            </div>
-            <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
-                <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
+                <div class="container-md d-flex justify-content-center">
+                 <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
+                </div>
             </div>
         </div>
     @endsection

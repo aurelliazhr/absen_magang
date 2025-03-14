@@ -23,11 +23,11 @@
                     placeholder="Batas Pengumpulan" style="border-color: black;"
                     value="{{ old('batas_pengumpulan', $task->batas_pengumpulan) }}" required>
                 <br>
-            </div>
-        </div>
 
-        <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
-            <button type="submit" class="btn btn-light fw-bold" id="masuk">Edit</button>
+                <div class="container-md d-flex justify-content-center">
+                 <button type="submit" class="btn btn-light fw-bold" id="masuk">Edit</button>
+                </div>
+            </div>
         </div>
     </form>
 
