@@ -2,8 +2,8 @@
     #edit {
         background-color: #1D0CD1;
         color: white;
-        width: 276px;
-        height: 59px;
+        width: 70%;
+        height: 100%;
         font-size: 27px;
     }
 
@@ -30,9 +30,11 @@
                     style="border-color: black;">
                 <small>Ketik kata sandi baru jika ingin menggantinya</small>
                 <br>
-            </div>
-            <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 10%;">
-                <button type="submit" class="btn btn-light fw-bold" id="edit">Edit</button>
+               <div class="container d-flex text-center justify-content-center mt-5">
+               <div class="col-md d-flex justify-content-center">
+                 <button type="submit" class="btn btn-light fw-bold" id="edit">Edit</button>
+               </div>            
+               </div>
             </div>
         </div>
     @endsection

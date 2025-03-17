@@ -1,13 +1,17 @@
+<style>
+    #btn1{
+        height: 85%;
+        width: 100%;
+        font-weight: bold;
+        font-size: 30px;
+    }
+</style>
 @extends('templateAdmin')
 
 @section('admin')
-    <div class="container-fluid px-4 td-md-flex justify-content-md-center" id="container1"
-        style="text-align:center; display:flex;">
-        <div class="row text-center" style="display:flex">
-            <div class="col">
-                <a type="button" href="{{ route('admin.tambah_guru') }}" class="btn btn-success mt-4 text-nowrap "
-                    style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 605px; --bs-btn-font-size: 30px;">Tambah Data</a>
-            </div>
+    <div class="container-fluid d-flex justify-content-center" id="container1">
+        <div class="col-md text-center justify-content-center">
+            <a type="button" href="{{ route('admin.tambah_guru') }}" class="btn btn-success mt-4 text-nowrap" id="btn1">Tambah Data</a>
         </div>
     </div>
     <div class="table-responsive container mt-5 d-flex justify-content-center">

@@ -1,16 +1,24 @@
+<style>
+    #btn1{
+        height: 80%;
+        width: 100%;
+        font-weight: bold;
+        font-size: 28px;
+    }
+    #btn2{
+        height: 80%;
+        width: 100%;
+        font-weight: bold;
+        font-size: 28px;
+    }
+</style>
 @extends('templateAdmin')
 
 @section('admin')
     <div class="container-fluid px-4 d-flex justify-content-center" id="container1" style="text-align:center;">
-        <div class="row text-center d-flex">
-            <div class="col">
-                <a href="{{route('admin.rekap_siswa')}}" class="btn btn-success mt-4 text-nowrap"
-                    style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Rekap Data</a>
-            </div>
-            <div class="col">
-                <a href="{{ route('admin.tambah_siswa') }}" class="btn btn-success mt-4 text-nowrap"
-                    style="--bs-btn-padding-y: 20px; --bs-btn-padding-x: 260px; --bs-btn-font-size: 30px;">Tambah Data</a>
-            </div>
+        <div class="col-md d-flex gap-5">
+            <a href="{{route('admin.rekap_siswa')}}" class="btn btn-success mt-4 text-nowrap" id="btn1">Rekap Data</a>
+            <a href="{{ route('admin.tambah_siswa') }}" class="btn btn-success mt-4 text-nowrap" id="btn2">Tambah Data</a>
         </div>
     </div>
 
