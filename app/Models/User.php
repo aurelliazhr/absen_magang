@@ -23,7 +23,8 @@ class User extends Authenticatable
         'password',
         'asal_sekolah',
         'jenis_kelamin',
-        'id_teachers'
+        'id_teachers',
+        'absen'
     ];
 
     /**

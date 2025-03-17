@@ -3,23 +3,33 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absent;
+use App\Models\Assignment;
+use App\Models\Score;
+use App\Models\Task;
 use App\Models\Teacher;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class SiswaController extends Controller
 {
-    function home() {
-        $userId = Auth::id();
-        $absents = Absent::where('id_users', $userId)->orderBy('created_at', 'desc')->paginate(10);
-    
-        return view('siswa.home', compact('absents'));
-    }    
 
-    function absen_datang(Request $request) {
+    function home()
+    {
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        $absents = Absent::where('id_users', $userId)->orderBy('created_at', 'desc')->paginate(10);
+        $assignments = Assignment::where('id_users', $userId)->orderBy('created_at', 'desc')->paginate(10);
+
+        return view('siswa.home', compact('absents', 'user', 'assignments'));
+    }
+
+
+    function absen_datang(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'status' => 'required',
             'keterangan' => 'nullable'
@@ -37,12 +47,17 @@ class SiswaController extends Controller
             'keterangan' => $request->keterangan,
         ]);
 
-        session(['sudah_absen_datang' => true]);
+        User::where('id', $userId)->update(['absen_datang' => true]);
+
+        if ($absenDatang = $request->status === 'izin' && 'sakit') {
+            User::where('id', $userId)->update(['absen_datang' => false]);
+        }
 
         return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
     }
 
-    function absen_pulang(Request $request) {
+    function absen_pulang(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'keterangan' => 'nullable'
         ]);
@@ -60,19 +75,26 @@ class SiswaController extends Controller
             'kategori' => 'pulang'
         ]);
 
-        session()->forget('sudah_absen_datang');
+        // session()->forget('sudah_absen_datang');
+        User::where('id', $userId)->update(['absen_datang' => false]);
 
         return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
     }
 
-    function profil() {
-        return view ('siswa.profil');
+    public function profil(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $teachers = Teacher::all();
+
+        return view('siswa.profil', compact('user', 'teachers'));
     }
 
-    function profil_proses(Request $request, $id) {
+    public function profil_proses(Request $request, $id)
+    {
         $user = User::findOrFail($id);
 
         $validator = Validator::make($request->all(), [
+            'foto_profil' => 'nullable|mimes:png,jpg,jpeg|max:2048',
             'nama' => 'required',
             'email' => 'sometimes|email|unique:users,email,' . $id,
             'password' => 'nullable|min:5',
@@ -83,12 +105,23 @@ class SiswaController extends Controller
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
 
-        $userId = Auth::id();
-
         $user->nama = $request->nama;
         $user->asal_sekolah = $request->asal_sekolah;
         $user->jenis_kelamin = $request->jenis_kelamin;
         $user->id_teachers = $request->id_teachers;
+
+        if ($request->hasFile('foto_profil')) {
+            $foto_profil = $request->file('foto_profil');
+            $filename = date('YmdHis') . '_' . $foto_profil->getClientOriginalName();
+            $path = 'profil-user/' . $filename;
+
+            if ($user->foto_profil && Storage::disk('public')->exists('profil-user/' . $user->foto_profil)) {
+                Storage::disk('public')->delete('profil-user/' . $user->foto_profil);
+            }
+
+            Storage::disk('public')->put($path, file_get_contents($foto_profil));
+            $user->foto_profil = $filename;
+        }
 
         if ($request->has('email') && !empty($request->email)) {
             $user->email = $request->email;
@@ -100,6 +133,64 @@ class SiswaController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.data_siswa')->with('success', 'Data siswa berhasil diperbarui!');
+        return redirect()->route('siswa.home')->with('success', 'Data siswa berhasil diperbarui!');
+    }
+
+    function tugas()
+    {
+        $user = Auth::user();
+        $tugas = Task::where('id_teachers', $user->id_teachers)->orderBy('id', 'desc')->paginate(10);
+
+        return view('siswa.tugas', compact('user', 'tugas'));
+    }
+
+    function detail_tugas($id)
+    {
+        $user = Auth::user();
+        $tugas = Task::findOrFail($id);
+
+        return view('siswa.detail_tugas', compact('user', 'tugas'));
+    }
+
+    function pengumpulan($id)
+    {
+        $tugas = Task::findOrFail($id);
+
+        $user = Auth::user();
+
+        return view('siswa.pengumpulan', compact('user', 'tugas'));
+    }
+
+    function pengumpulan_proses(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_tasks' => 'required',
+            'judul' => 'required',
+            'file' => 'nullable'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Assignment::create([
+            'id_users' => Auth::id(),
+            'id_tasks' => $request->id_tasks,
+            'judul' => $request->judul,
+            'file' => $request->file
+        ]);
+
+        return redirect()->route('siswa.tugas')->with('success', 'Siswa berhasil ditambahkan!');
+    }
+
+    function nilai($id)
+    {
+        $user = Auth::user();
+        $tugas = Task::findOrFail($id);
+        $scores = Score::where('id_users', $user->id)
+            ->where('id_tasks', $id)
+            ->firstOrFail();
+
+        return view('siswa.nilai', compact('user', 'tugas', 'scores'));
     }
 }

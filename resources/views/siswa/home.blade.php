@@ -33,8 +33,8 @@
     <div class="container-sm text-center">
         <div class="row">
             <div class="col-md-6">
-                <a href="" type="button" class="btn btn-success mt-3 fs-2 fw-bold" style="width: 100%; height: 100%;"
-                    id="tugas">Tugas</a>
+                <a href="/siswa/tugas" type="button" class="btn btn-success mt-3 fs-2 fw-bold"
+                    style="width: 100%; height: 100%;" id="tugas">Tugas</a>
             </div>
             <div class="col-md-6">
                 <a href="" type="button" class="btn btn-success mt-3 fs-2 fw-bold"
@@ -45,7 +45,7 @@
 
         <form action="{{ route('siswa.absen_datang') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @if (!session('sudah_absen_datang'))
+            @if ($user->absen_datang == 0)
                 <div class="row justify-content-start mt-5" id="formH">
                     <div class="col-md-6">
                         <div class="d-flex gap-3" name="status">
@@ -78,17 +78,16 @@
             @endif
         </form>
 
-        @if (session('sudah_absen_datang'))
+        @if ($user->absen_datang == 1)
             <form action="{{ route('siswa.absen_pulang') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-
                 <div class="row justify-content-start mt-5" id="formH">
                     <div class="col-md-6">
                     </div>
                     <!-- absen -->
                     <div class="container-sm d-flex align-items-center mt-5 ms-5">
-                        <textarea name="keterangan" required id="" class="form-control form-control-lg" placeholder="Jurnal Kegiatan Harian"
-                            style="border: 3px solid black; height: 201px; width: 455px;"></textarea>
+                        <textarea name="keterangan" required id="" class="form-control form-control-lg"
+                            placeholder="Jurnal Kegiatan Harian" style="border: 3px solid black; height: 201px; width: 455px;"></textarea>
                         <br>
                     </div>
                     <div class="d-flex justify-content-center align-items-center mt-4 me-5">
@@ -112,7 +111,13 @@
                             @elseif ($a->status == 'sakit' || $a->status == 'izin')
                                 Anda {{ $a->status }} pada {{ $a->created_at->format('d M Y H:i') }}
                             @endif
+                            @foreach ($assignments as $as)
+                        <li class="list-group-item fw-bold" id="history">
+                            <i class="bi bi-clock" style="-webkit-text-stroke: 1px;"></i>
+                            Anda telah mengumpulkan "{{ $as->judul }}" pada {{ $as->created_at->format('d M Y H:i') }}
                         </li>
+                    @endforeach
+                    </li>
                     @endforeach
                 </ul>
             </div>

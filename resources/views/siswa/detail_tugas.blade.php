@@ -14,21 +14,26 @@
 @extends('templateSiswa')
 
 @section('siswa')
-<h1 class="fw-bold text-center mt-5">Detail tugas</h1>
-<div class="container d-flex justify-content-center align-items-center" id="Pform">
-    <div class="col-md-6">
-        <input type="text" class="form-control form-control-lg" placeholder="Tugas 1" style="border: 3px solid black;">
-        <br>
-        <input type="text" class="form-control form-control-lg" placeholder="kerjakan Tugas 1!" style="border: 3px solid black;">
-        <br>
-        <input type="file" class="form-control form-control-lg" placeholder="Tugas 1.docx" style="border: 3px solid black;">
-        <br>
-        <input type="date" class="form-control form-control-lg" placeholder="Tugas 1" style="border: 3px solid black;">
-        <br>
-    </div>
-    <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
-        <a href="" type="button" class="btn btn-light fw-bold" id="back">Kembali</a>
-    </div>
-</div>
+    <h1 class="fw-bold text-center mt-5">Detail tugas</h1>
+    <div class="container d-flex justify-content-center align-items-center" id="Pform">
+        <div class="col-md-6">
+            <input type="text" class="form-control form-control-lg" placeholder="Judul Tugas" value="{{ $tugas->judul }}"
+                style="border: 3px solid black;">
+            <br>
+            <textarea class="form-control form-control-lg" placeholder="Deskripsi Tugas" value="{{ $tugas->deskripsi }}"
+                style="border: 3px solid black;">{{ $tugas->deskripsi }}</textarea>
+            <br>
+            <input type="file" class="form-control form-control-lg" value="{{ $tugas->file }}" placeholder="File Tugas"
+                style="border: 3px solid black;">
+            <br>
+            <input type="text" class="form-control form-control-lg"
+                value="{{ \Carbon\Carbon::parse($tugas->batas_pengumpulan)->format('d M Y H:i') }}"
+                placeholder="Batas Pengumpulan" style="border: 3px solid black;" readonly>
+            <br>
 
+        </div>
+        <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
+            <a href="{{ route('siswa.tugas') }}" type="button" class="btn btn-light fw-bold" id="back">Kembali</a>
+        </div>
+    </div>
 @endsection

@@ -75,18 +75,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/home', [SiswaController::class, 'home'])->name('siswa.home');
         Route::post('/absen_datang', [SiswaController::class, 'absen_datang'])->name('siswa.absen_datang');
         Route::post('/absen_pulang', [SiswaController::class, 'absen_pulang'])->name('siswa.absen_pulang');
-        Route::get('/profil', [SiswaController::class, 'profil'])->name('siswa.profil');
-        Route::post('/profil_proses', [SiswaController::class, 'profil_proses'])->name('siswa.profil_proses');
+        Route::get('/profil/{id}', [SiswaController::class, 'profil'])->name('siswa.profil');
+        Route::put('/profil_proses/{id}', [SiswaController::class, 'profil_proses'])->name('siswa.profil_proses');
+        Route::get('/tugas', [SiswaController::class, 'tugas'])->name('siswa.tugas');
+        Route::get('/detail_tugas/{id}', [SiswaController::class, 'detail_tugas'])->name('siswa.detail_tugas');
+        Route::get('/pengumpulan/{id}', [SiswaController::class, 'pengumpulan'])->name('siswa.pengumpulan');
+        Route::post('/pengumpulan_proses', [SiswaController::class, 'pengumpulan_proses'])->name('siswa.pengumpulan_proses');
+        Route::get('/nilai/{id}', [SiswaController::class, 'nilai'])->name('siswa.nilai');
 
-        Route::get('/siswa/tugas', function () {
-            return view('siswa/tugas');
-        })->name('siswa.tugas');
-        Route::get('/siswa/detail_tugas', function () {
-            return view('siswa/detail_tugas');
-        });
-        Route::get('/siswa/pengumpulan', function () {
-            return view('siswa/pengumpulan');
-        });
         Route::get('/siswa/nilai', function () {
             return view('siswa/nilai');
         });

@@ -22,7 +22,7 @@ return new class extends Migration
                 indexName: 'assignments_users_id'
             );
             $table->string('judul');
-            $table->string('file');
+            $table->string('file')->nullable();
             $table->timestamps();
         });
     }
