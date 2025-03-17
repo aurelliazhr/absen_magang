@@ -2,7 +2,7 @@
     #masuk {
         background-color: #1D0CD1;
         color: white;
-        width: 276px;
+        width: 70%;
         height: 59px;
         font-size: 27px;
     }
@@ -43,9 +43,11 @@
                     <small>Kata sandi harus diisi dengan min. 5 karakter</small>
                 @enderror
                 <br>
-            </div>
-            <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 10%;">
-                <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
+                <div class="container-md text-center d-flex justify-content-center">
+                 <div class="col-md d-flex justify-content-center">
+                  <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
+                 </div>
+                </div>
             </div>
         </div>
     @endsection

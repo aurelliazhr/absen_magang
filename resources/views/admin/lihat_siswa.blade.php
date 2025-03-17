@@ -12,7 +12,7 @@
 
 @section('admin')
     <h1 class="fw-bold text-center mt-3" id="judul">Data siswa</h1>
-    <div class="container m-5 d-flex justify-content-center">
+    <div class="container-fluid d-flex justify-content-center">
         <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
         <div class="col-md-6 ms-5 mt-5">
             <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59"
@@ -30,8 +30,8 @@
             <input type="text" value="{{ $user->teacher ? $user->teacher->nama : '' }}"
                 class="form-control form-control-lg h-59" style="border-color: black;" readonly>
             <br>
-            <div class="position-relative text-center" style="width: 350px;">
-                <a href="{{route('admin.data_siswa')}}" class="btn btn-light position-absolute pull-right" id="btnM">Kembali</a>
+            <div class="container-md text-center justify-content-center" style="width: 350px;">
+                <a href="{{route('admin.data_siswa')}}" class="btn btn-light" id="btnM">Kembali</a>
             </div>
         </div>
     </div>

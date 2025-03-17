@@ -2,8 +2,8 @@
     #masuk {
         background-color: #1D0CD1;
         color: white;
-        width: 276px;
-        height: 59px;
+        width: 50%;
+        height: 50%;
         font-size: 27px;
     }
 
@@ -24,7 +24,7 @@
 <form action="{{ route('admin.tambah_siswa_proses') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <h1 class="fw-bold text-center" id="judul">Tambah data siswa</h1>
-    <div class="container  d-flex justify-content-center align-items-center" id="Gform">
+    <div class="container-fluid  d-flex justify-content-center align-items-center" id="Gform">
      <div class="col-md-6" id="form">
        <input type="text" id="nama" name="nama" placeholder="Nama Siswa" class="form-control form-control-lg" style="border-color: black;">
        @error('nama')
@@ -64,9 +64,9 @@
        @error('id_teachers')
         <small>Email Pembimbing harus diisi</small>
        @enderror
-     </div>
-     <div class="container-lg d-flex justify-content-center">
-            <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
+       <div class="col-md text-center justify-content-center mt-3">
+         <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>
+       </div>
      </div>
     </div>
 </form>
