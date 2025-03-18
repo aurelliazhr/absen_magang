@@ -25,10 +25,10 @@
                         class="d-inline-block align-text-top">
                 </a>
                 <li class="nav-item">
-                    <a class="nav-link active" href="pembimbing/home.blade.php" style="color: white;">Home</a>
+                    <a class="nav-link active" href="{{route('guru.home')}}" style="color: white;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="pembimbing/profil.blade.php" style="color: white;">Profil</a>
+                    <a class="nav-link active" href="/pembimbing/profil" style="color: white;">Profil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="{{route('guru.tugas')}}" style="color: white;">Tugas</a>
@@ -36,7 +36,7 @@
             </ul>
             <ul class="nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.blade.php" style="color: white;">Logout</a>
+                    <a class="nav-link active" href="{{route('login')}}" style="color: white;">Logout</a>
                 </li>
             </ul>
         </div>

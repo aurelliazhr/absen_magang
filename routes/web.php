@@ -18,9 +18,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware('admin')->group(function () {
     Route::prefix('admin')->group(function () {
 
-        // Route::get('/home', function () {
-        //     return view('admin/home');
-        // })->name('admin.home');
         Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
         Route::get('/tambah_siswa', [AdminController::class, 'tambah_siswa'])->name('admin.tambah_siswa');
         Route::post('/tambah_siswa-proses', [AdminController::class, 'tambah_siswa_proses'])->name('admin.tambah_siswa_proses');
@@ -46,27 +43,23 @@ Route::middleware('admin')->group(function () {
 
 //Pembimbing
 Route::prefix('pembimbing')->group(function () {
+
     Route::get('/home', [GuruController::class, 'index'])->name('guru.home');
     Route::get('/lihat_siswa/{id}', [GuruController::class, 'lihat'])->name('guru.lihat_siswa');
     Route::get('/profil', function () {
         return view('pembimbing/profil');
     });
+
     Route::get('/tugas', [GuruController::class, 'tugas'])->name('guru.tugas');
     Route::get('/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
-    // Route::get('/tambah_tugas', function () {
-    //     return view('pembimbing/tambah_tugas');
-    // });
     Route::get('/tambah_tugas', [GuruController::class, 'tambah_tugas'])->name('guru.tambah_tugas');
     Route::post('/tambah_tugas-proses', [GuruController::class, 'tambah_tugas_proses'])->name('guru.tambah_tugas_proses');
     Route::get('/edit_tugas/{id}', [GuruController::class, 'edit_tugas'])->name('guru.edit_tugas');
     Route::put('/edit_tugas_proses/{id}', [GuruController::class, 'edit_tugas_proses'])->name('guru.edit_tugas_proses');
     Route::delete('/hapus_tugas/{id}', [GuruController::class, 'hapus_tugas'])->name('guru.hapus_tugas');
-    Route::get('/pengumpulan', function () {
-        return view('pembimbing/pengumpulan');
-    });
-    Route::get('/detail_pengumpulan', function () {
-        return view('pembimbing/detail_pengumpulan');
-    });
+    Route::get('/pengumpulan', [GuruController::class, 'pengumpulan'])->name('guru.pengumpulan');
+    Route::get('/detail_pengumpulan/{id}', [GuruController::class, 'detail_pengumpulan'])->name('guru.detail_pengumpulan');
+    Route::post('nilai', [GuruController::class, 'nilai'])->name('guru.nilai');
 });
 
 //Siswa
@@ -75,16 +68,14 @@ Route::middleware('auth')->group(function () {
         Route::get('/home', [SiswaController::class, 'home'])->name('siswa.home');
         Route::post('/absen_datang', [SiswaController::class, 'absen_datang'])->name('siswa.absen_datang');
         Route::post('/absen_pulang', [SiswaController::class, 'absen_pulang'])->name('siswa.absen_pulang');
+
         Route::get('/profil/{id}', [SiswaController::class, 'profil'])->name('siswa.profil');
         Route::put('/profil_proses/{id}', [SiswaController::class, 'profil_proses'])->name('siswa.profil_proses');
+
         Route::get('/tugas', [SiswaController::class, 'tugas'])->name('siswa.tugas');
         Route::get('/detail_tugas/{id}', [SiswaController::class, 'detail_tugas'])->name('siswa.detail_tugas');
         Route::get('/pengumpulan/{id}', [SiswaController::class, 'pengumpulan'])->name('siswa.pengumpulan');
         Route::post('/pengumpulan_proses', [SiswaController::class, 'pengumpulan_proses'])->name('siswa.pengumpulan_proses');
         Route::get('/nilai/{id}', [SiswaController::class, 'nilai'])->name('siswa.nilai');
-
-        Route::get('/siswa/nilai', function () {
-            return view('siswa/nilai');
-        });
     });
 });

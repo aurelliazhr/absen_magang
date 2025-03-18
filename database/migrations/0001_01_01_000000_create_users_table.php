@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('foto_profil')->nullable();
             $table->enum('jenis_kelamin', ['Laki-Laki', 'Perempuan']);
             $table->boolean('absen_datang')->default(false);
+            $table->timestamp('reset')->nullable();
             $table->timestamps();
         });
 

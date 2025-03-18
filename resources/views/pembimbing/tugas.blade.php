@@ -22,12 +22,10 @@
                 <tr class="table-group-divider">
                     <td>{{ $tsk->judul }}</td>
                     <td>
-                        {{-- <a href="{{route('pembimbing.detail', ['id' => $t->id])}}">
-                            <i class="bi bi-file-earmark-check"></i>
-                        </a> --}}
+                        {{-- <a href="{{route('guru.pengumpulan', ['id' => $t->id])}}"> --}}
                     </td>
                     <td>
-                        <a href="" class="active" style="color: #231F20;"><i class="bi bi-file-earmark-text fs-4"></i></a>
+                        <a href="{{route('guru.pengumpulan')}}" class="active" style="color: #231F20;"><i class="bi bi-file-earmark-text fs-4"></i></a>
                     </td>
                     <td>
                         <a href="{{ route('guru.detail', ['id' => $tsk->id]) }}" class="active"

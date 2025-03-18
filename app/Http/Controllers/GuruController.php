@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Assignment;
+use App\Models\Score;
 use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -80,7 +82,7 @@ class GuruController extends Controller
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
             'deskripsi' => 'required',
-            'file' => 'nullable|min:5',
+            // 'file' => 'nullable|min:5',
             'batas_pengumpulan' => 'required'
         ]);
 
@@ -88,12 +90,12 @@ class GuruController extends Controller
 
         $task->judul = $request->judul;
         $task->deskripsi = $request->deskripsi;
-        $task->file = $request->file;
+        // $task->file = $request->file;
         $task->batas_pengumpulan = $request->batas_pengumpulan;
 
         $task->save();
 
-        return redirect()->route('tugas.tugas')->with('success', 'Data siswa berhasil diperbarui!');
+        return redirect()->route('guru.tugas')->with('success', 'Data siswa berhasil diperbarui!');
     }
 
     public function hapus_tugas(Request $request, $id)
@@ -105,5 +107,38 @@ class GuruController extends Controller
         }
 
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
+    }
+
+    function pengumpulan() {
+        $tugas = Assignment::with(['user', 'score'])->orderBy('id', 'desc')->paginate(10);
+
+        return view ('pembimbing.pengumpulan', compact('tugas'));
+    }
+
+    function detail_pengumpulan($id) {
+        $tugas = Assignment::with('user', 'score')->findOrFail($id);
+
+        return view ('pembimbing.detail_pengumpulan', compact('tugas'));
+    }
+
+    function nilai(Request $request) {
+
+        $validator = Validator::make($request->all(), [
+            // 'id_teachers' => 'required',
+            'nilai' => 'required',
+            'catatan' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()->withInput()->withErrors($validator);
+        }
+
+        Score::create([
+            // 'id_teachers' => $request->id_teachers,
+            'nilai' => $request->nilai,
+            'catatan' => $request->catatan
+        ]);
+
+        return redirect()->route('guru.pengumpulan')->with('success', 'Siswa berhasil ditambahkan!');
     }
 }

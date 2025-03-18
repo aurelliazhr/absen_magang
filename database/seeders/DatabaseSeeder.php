@@ -90,6 +90,12 @@ class DatabaseSeeder extends Seeder
             'judul' => 'Pengumpulan Tugas 1'
         ]);
 
+        Assignment::create([
+            'id_tasks' => '1',
+            'id_users' => '2',
+            'judul' => 'Pengumpulan Tugas 2'
+        ]);
+
         Score::create([
             'id_users' => '1',
             'id_tasks' => '1',

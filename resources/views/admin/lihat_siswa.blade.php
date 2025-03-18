@@ -23,9 +23,10 @@
         @if (isset($user->foto_profil))
             <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="rounded float-start img-responsive"
                 id="pfp" alt="Foto Profil" width="100">
+        @else
+            <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
         @endif
         <div class="container-fluid d-flex justify-content-center">
-            <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
             <div class="col-md-6 ms-5 mt-5">
                 <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59"
                     placeholder="Nama siswa" style="border-color: black;" readonly>

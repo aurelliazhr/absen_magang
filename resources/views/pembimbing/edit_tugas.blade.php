@@ -12,7 +12,7 @@
                     style="border-color: black;" value="{{ old('judul', $task->judul) }}" required>
                 <br>
 
-                <textarea class="form-control form-control-lg h-59" placeholder="Deskripsi Tugas" style="border-color: black;" readonly>{{ $task->deskripsi }}</textarea>
+                <textarea class="form-control form-control-lg h-59" name="deskripsi" placeholder="Deskripsi Tugas" style="border-color: black;" >{{ $task->deskripsi }}</textarea>
                 <br>
 
                 <input type="file" class="form-control form-control-lg" name="file" placeholder="File"

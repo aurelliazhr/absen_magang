@@ -35,7 +35,7 @@
      <div class="container-md d-flex justify-content-between align-items-center text-center mt-1 gap-3">
        <button class="btn btn-light " id="btnS">Simpan</button>
        <br>
-       <a href="#" class="btn btn-light" id="btnM">Kembali</a>
+       <a href="{{route('guru.home')}}" class="btn btn-light" id="btnM">Kembali</a>
       </div>
    </div>
 </div>

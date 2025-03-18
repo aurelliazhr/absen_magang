@@ -8,6 +8,7 @@ use App\Models\Score;
 use App\Models\Task;
 use App\Models\Teacher;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -76,7 +77,11 @@ class SiswaController extends Controller
         ]);
 
         // session()->forget('sudah_absen_datang');
-        User::where('id', $userId)->update(['absen_datang' => false]);
+        User::where('id', $userId)->update([
+            'absen_datang' => true,
+            // 'reset' => Carbon::tomorrow() // Menyimpan kapan harus direset
+            'reset' => ('2025-03-18 01:12')
+        ]);
 
         return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
     }
@@ -133,7 +138,7 @@ class SiswaController extends Controller
 
         $user->save();
 
-        return redirect()->route('siswa.home')->with('success', 'Data siswa berhasil diperbarui!');
+        return redirect()->route('siswa.profil', $user->id)->with('success', 'Data siswa berhasil diperbarui!');
     }
 
     function tugas()
