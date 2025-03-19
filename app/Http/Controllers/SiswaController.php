@@ -50,9 +50,14 @@ class SiswaController extends Controller
 
         User::where('id', $userId)->update(['absen_datang' => true]);
 
-        if ($absenDatang = $request->status === 'izin' && 'sakit') {
+        // if ($absenDatang = $request->status === 'izin' === 'sakit') {
+        //     User::where('id', $userId)->update(['absen_datang' => false]);
+        // }
+
+        if (in_array($request->status, ['izin', 'sakit'])) {
             User::where('id', $userId)->update(['absen_datang' => false]);
         }
+        
 
         return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
     }
@@ -77,11 +82,7 @@ class SiswaController extends Controller
         ]);
 
         // session()->forget('sudah_absen_datang');
-        User::where('id', $userId)->update([
-            'absen_datang' => true,
-            // 'reset' => Carbon::tomorrow() // Menyimpan kapan harus direset
-            'reset' => ('2025-03-18 01:12')
-        ]);
+        User::where('id', $userId)->update(['absen_datang' => false]);
 
         return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
     }
