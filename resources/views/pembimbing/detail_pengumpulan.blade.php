@@ -54,7 +54,7 @@
                 <div class="container-md d-flex justify-content-between align-items-center text-center gap-4"
                     style="margin-bottom: 2%;" id="Bform">
                     <button type="submit" class="btn btn-light fw-bold" id="simpan">Simpan</button>
-                    <a href="{{ route('guru.pengumpulan') }}" type="button" class="btn btn-light fw-bold"
+                    <a href="{{ route('guru.pengumpulan', $tugas->id) }}" type="button" class="btn btn-light fw-bold"
                         id="back">Kembali</a>
                 </div>
             </form>

@@ -8,11 +8,13 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
 class GuruController extends Controller
 {
-    public function index() {
+    public function index()
+    {
         $users = User::orderBy('nama', 'asc')->paginate(10);
 
         return view('pembimbing.home', compact('users'));
@@ -21,12 +23,23 @@ class GuruController extends Controller
     public function lihat($id)
     {
         $user = User::findOrFail($id);
-        
+
         return view('pembimbing.lihat_siswa', compact('user'));
     }
+    public function lihat_file($file)
+    {
+        $filePath = public_path('file/' . $file);
 
-    public function tugas() {
-        $tasks = Task::paginate(10);
+        if (!file_exists($filePath)) {
+            abort(404);
+        }
+
+        return response()->file($filePath);
+    }
+
+    public function tugas()
+    {
+        $tasks = Task::orderBy('id', 'desc')->paginate(10);
 
         return view('pembimbing.tugas', compact('tasks'));
     }
@@ -34,7 +47,7 @@ class GuruController extends Controller
     public function detail($id)
     {
         $task = Task::findOrFail($id);
-        
+
         return view('pembimbing.detail', compact('task'));
     }
 
@@ -82,7 +95,7 @@ class GuruController extends Controller
         $validator = Validator::make($request->all(), [
             'judul' => 'required',
             'deskripsi' => 'required',
-            // 'file' => 'nullable|min:5',
+            'file' => 'nullable',
             'batas_pengumpulan' => 'required'
         ]);
 
@@ -90,7 +103,19 @@ class GuruController extends Controller
 
         $task->judul = $request->judul;
         $task->deskripsi = $request->deskripsi;
-        // $task->file = $request->file;
+
+        if ($request->hasFile('file')) {
+            if ($task->file && File::exists(public_path('file/' . $task->file))) {
+                File::delete(public_path('file/' . $task->file));
+            }
+
+            $file = $request->file;
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $request->file->move('file', $filename);
+
+            $task->file = $filename;
+        }
+
         $task->batas_pengumpulan = $request->batas_pengumpulan;
 
         $task->save();
@@ -109,19 +134,25 @@ class GuruController extends Controller
         return redirect()->back()->with('success', 'Data Berhasil Dihapus');
     }
 
-    function pengumpulan() {
-        $tugas = Assignment::with(['user', 'score'])->orderBy('id', 'desc')->paginate(10);
+    function pengumpulan($id)
+    {
+        $tugas = Assignment::with(['user', 'score'])
+            ->where('id_tasks', $id)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
-        return view ('pembimbing.pengumpulan', compact('tugas'));
+        return view('pembimbing.pengumpulan', compact('tugas'));
     }
 
-    function detail_pengumpulan($id) {
+    function detail_pengumpulan($id)
+    {
         $tugas = Assignment::with('user', 'score')->findOrFail($id);
 
-        return view ('pembimbing.detail_pengumpulan', compact('tugas'));
+        return view('pembimbing.detail_pengumpulan', compact('tugas'));
     }
 
-    function nilai(Request $request) {
+    function nilai(Request $request)
+    {
 
         $validator = Validator::make($request->all(), [
             // 'id_teachers' => 'required',

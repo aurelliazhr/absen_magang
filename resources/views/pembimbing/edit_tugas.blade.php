@@ -15,8 +15,11 @@
                 <textarea class="form-control form-control-lg h-59" name="deskripsi" placeholder="Deskripsi Tugas" style="border-color: black;" >{{ $task->deskripsi }}</textarea>
                 <br>
 
-                <input type="file" class="form-control form-control-lg" name="file" placeholder="File"
+                <input type="file" class="form-control form-control-lg" name="file" placeholder="File" value="{{ $task->file }}"
                     style="border-color: black;">
+                    <small>
+                        Upload file tugas baru jika ada
+                    </small>
                 <br>
 
                 <input type="text" class="form-control form-control-lg" name="batas_pengumpulan"

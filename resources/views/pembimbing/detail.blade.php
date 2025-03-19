@@ -23,15 +23,19 @@
             <br>
             <textarea class="form-control form-control-lg h-59" placeholder="Deskripsi Tugas" style="border-color: black;" readonly>{{ $task->deskripsi }}</textarea>
             <br>
-            <input type="file" value="{{ $task->file }}" class="form-control form-control-lg h-59"
-                placeholder="File Tugas" style="border-color: black;" readonly>
+            @if (!empty($task->file))
+                <a href="{{ route('guru.lihat_file', ['file' => $task->file]) }}" target="_blank" rel="noopener noreferrer">
+                    {{ $task->file }}
+                </a>
+            @else
+                <input type="text" placeholder="Tidak Ada File Tugas" readonly>
+            @endif
             <br>
             <input type="text" value="{{ $task->batas_pengumpulan }}" class="form-control form-control-lg h-59"
                 placeholder="Batas Pengumpulan" style="border-color: black;" readonly>
             <br>
             <div class="container-md d-flex justify-content-between align-items-center text-center " style="width: 350px;">
-                <a href="{{ route('guru.tugas') }}" class="btn btn-light"
-                    id="btnM">Kembali</a>
+                <a href="{{ route('guru.tugas') }}" class="btn btn-light" id="btnM">Kembali</a>
             </div>
         </div>
     </div>

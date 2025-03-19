@@ -9,6 +9,7 @@ class Task extends Model
     protected $fillable = [
         'judul',
         'deskripsi',
+        'file',
         'batas_pengumpulan'
     ];
 }
