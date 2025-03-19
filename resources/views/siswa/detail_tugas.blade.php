@@ -15,7 +15,7 @@
 
 @section('siswa')
     <h1 class="fw-bold text-center mt-5">Detail tugas</h1>
-    <div class="container d-flex justify-content-center align-items-center" id="Pform">
+    <div class="container-md d-flex justify-content-center align-items-center" id="Pform">
         <div class="col-md-6">
             <input type="text" class="form-control form-control-lg" placeholder="Judul Tugas" value="{{ $tugas->judul }}"
                 style="border: 3px solid black;">
@@ -30,10 +30,9 @@
                 value="{{ \Carbon\Carbon::parse($tugas->batas_pengumpulan)->format('d M Y H:i') }}"
                 placeholder="Batas Pengumpulan" style="border: 3px solid black;" readonly>
             <br>
-
-        </div>
-        <div class="fixed-bottom d-flex justify-content-center" style="margin-bottom: 8%;">
-            <a href="{{ route('siswa.tugas') }}" type="button" class="btn btn-light fw-bold" id="back">Kembali</a>
+            <div class="container-md d-flex justify-content-center">
+             <a href="{{ route('siswa.tugas') }}" type="button" class="btn btn-light fw-bold" id="back">Kembali</a>
+            </div>
         </div>
     </div>
 @endsection

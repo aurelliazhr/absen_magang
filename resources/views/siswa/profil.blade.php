@@ -22,8 +22,9 @@
         @csrf
         @method('PUT')
         <h1 class="fw-bold text-center mt-5" id="judul">Profil siswa</h1>
-        <div class="container d-flex justify-content-center align-items-start gap-1 m-5">
-            <div class="d-flex flex-column align-items-center mt-5">
+        <div class="container-md d-flex justify-content-center align-items-start gap-1 m-5">
+            <div class="d-flex f
+            lex-column align-items-center mt-5">
                 @if (isset($user->foto_profil))
                     <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}"
                         class="rounded float-start img-responsive" id="pfp" alt="Foto Profil" width="100">
