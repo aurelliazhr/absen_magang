@@ -10,6 +10,7 @@ class Absent extends Model
         'id_users',
         'status',
         'keterangan',
-        'kategori'
+        'kategori',
+        'created_at'
     ];
 }

@@ -44,6 +44,7 @@
                 <br>
                 <input type="file" id="file" name="file" placeholder="File Tugas"
                     class="form-control form-control-lg" style="border-color: black;">
+                    <small>maksimal 2 mb</small>
                 <br>
                 <input type="datetime-local" id="batas_pengumpulan" name="batas_pengumpulan" placeholder="Batas Pengumpulan Tugas"
                     class="form-control form-control-lg" style="border-color: black;">

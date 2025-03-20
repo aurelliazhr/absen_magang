@@ -18,7 +18,7 @@
                 <input type="file" class="form-control form-control-lg" name="file" placeholder="File" value="{{ $task->file }}"
                     style="border-color: black;">
                     <small>
-                        Upload file tugas baru jika ada
+                        Upload file tugas baru jika ada (maks. 2 mb)
                     </small>
                 <br>
 

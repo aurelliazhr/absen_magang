@@ -37,7 +37,14 @@
             <input type="text" class="form-control form-control-lg" value="{{ $tugas->judul }}" readonly
                 placeholder="Judul Tugas" style="border-color: black;">
             <br>
-            <input type="file" class="form-control form-control-lg" style="border-color: black;">
+            @if (!empty($tugas->file))
+                <a href="{{ route('siswa.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
+                    rel="noopener noreferrer">
+                    {{ $tugas->file }}
+                </a>
+            @else
+                <input type="text" placeholder="Tidak Ada File" readonly>
+            @endif
             <br>
             <input type="text" class="form-control form-control-lg" value="{{ $tugas->updated_at }}" readonly
                 placeholder="Pengumpulan Tanggal" style="border-color: black;">

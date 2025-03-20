@@ -75,6 +75,7 @@ Route::middleware('auth')->group(function () {
 
         Route::get('/tugas', [SiswaController::class, 'tugas'])->name('siswa.tugas');
         Route::get('/detail_tugas/{id}', [SiswaController::class, 'detail_tugas'])->name('siswa.detail_tugas');
+        Route::get('/lihat_file/{file}', [SiswaController::class, 'lihat_file'])->name('siswa.lihat_file');
         Route::get('/pengumpulan/{id}', [SiswaController::class, 'pengumpulan'])->name('siswa.pengumpulan');
         Route::post('/pengumpulan_proses', [SiswaController::class, 'pengumpulan_proses'])->name('siswa.pengumpulan_proses');
         Route::get('/nilai/{id}', [SiswaController::class, 'nilai'])->name('siswa.nilai');

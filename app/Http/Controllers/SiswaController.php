@@ -50,14 +50,10 @@ class SiswaController extends Controller
 
         User::where('id', $userId)->update(['absen_datang' => true]);
 
-        // if ($absenDatang = $request->status === 'izin' === 'sakit') {
-        //     User::where('id', $userId)->update(['absen_datang' => false]);
-        // }
-
         if (in_array($request->status, ['izin', 'sakit'])) {
             User::where('id', $userId)->update(['absen_datang' => false]);
         }
-        
+
 
         return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
     }
@@ -158,6 +154,17 @@ class SiswaController extends Controller
         return view('siswa.detail_tugas', compact('user', 'tugas'));
     }
 
+    public function lihat_file($file)
+    {
+        $filePath = public_path('file/' . $file);
+
+        if (!file_exists($filePath)) {
+            abort(404);
+        }
+
+        return response()->file($filePath);
+    }
+
     function pengumpulan($id)
     {
         $tugas = Task::findOrFail($id);
@@ -172,18 +179,26 @@ class SiswaController extends Controller
         $validator = Validator::make($request->all(), [
             'id_tasks' => 'required',
             'judul' => 'required',
-            'file' => 'nullable'
+            'file' => 'required|max:2048'
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        $filename = null;
+
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('file'), $filename);
+        }
+
         Assignment::create([
             'id_users' => Auth::id(),
             'id_tasks' => $request->id_tasks,
             'judul' => $request->judul,
-            'file' => $request->file
+            'file' => $filename
         ]);
 
         return redirect()->route('siswa.tugas')->with('success', 'Siswa berhasil ditambahkan!');
@@ -195,7 +210,7 @@ class SiswaController extends Controller
         $tugas = Task::findOrFail($id);
         $scores = Score::where('id_users', $user->id)
             ->where('id_tasks', $id)
-            ->firstOrFail();
+            ->first();
 
         return view('siswa.nilai', compact('user', 'tugas', 'scores'));
     }

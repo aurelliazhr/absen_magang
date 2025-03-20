@@ -17,12 +17,12 @@
     <h1 class="fw-bold text-center mt-5">Nilai hasil tugas</h1>
     <div class="container-md d-flex justify-content-center align-items-center" id="Pform">
         <div class="col-md-6">
-            <input type="text" value="{{ $scores->nilai }}" placeholder="Nilai Akhir" class="form-control form-control-lg"
+            <input type="text" value="{{ $scores->nilai ?? 'Belum Ada Nilai'}}" readonly placeholder="Nilai Akhir" class="form-control form-control-lg"
                 id="nilai" style="border: 3px solid black;">
             <br>
-            <textarea name="" id="" value="{{ $scores->catatan }}" class="form-control form-control-lg"
+            <textarea name="" id=""  readonly class="form-control form-control-lg"
                 placeholder="Catatan Untuk Siswa" style="border: 3px solid black; height: 201px;">
-            {{ $scores->catatan }}
+            {{ $scores->catatan ?? 'Belum Ada Catatan'}}
         </textarea>
             <br>
             <div class="container-md d-flex justify-content-center">

@@ -138,7 +138,7 @@ class GuruController extends Controller
     {
         $tugas = Assignment::with(['user', 'score'])
             ->where('id_tasks', $id)
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->paginate(10);
 
         return view('pembimbing.pengumpulan', compact('tugas'));
