@@ -10,9 +10,10 @@
 
     #pfp {
         /* display: block; */
-        max-width: 100%;
+        max-width: 75%;
         height: auto;
         width: auto;
+        border: 3px solid #000;
     }
 </style>
 @extends('templateSiswa')
@@ -21,16 +22,15 @@
     <form action="{{ route('siswa.profil_proses', ['id' => $user->id]) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
-        <h1 class="fw-bold text-center mt-5" id="judul">Profil siswa</h1>
+        <h1 class="fw-bold text-center mt-3" id="judul">Profil siswa</h1>
         <div class="container-md d-flex justify-content-center align-items-start gap-1 m-5">
-            <div class="d-flex f
-            lex-column align-items-center mt-5">
+            <div class="col-md-4 text-center align-items-center mt-5">
                 @if (isset($user->foto_profil))
                     <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}"
-                        class="rounded float-start img-responsive" id="pfp" alt="Foto Profil" width="100">
+                        class="img-thumbnail img-responsive rounded-circle" id="pfp" alt="Foto Profil" width="100">
                 @endif
 
-                <div class="d-flex justify-content-center align-items-start mt-3 gap-3">
+                <div class="d-flex justify-content-center mt-3 gap-3">
                     <button type="submit" class="btn btn-light" id="btnM">Simpan</button>
                     <a href="{{ route('siswa.home') }}" class="btn btn-light" id="btnM">Kembali</a>
                 </div>

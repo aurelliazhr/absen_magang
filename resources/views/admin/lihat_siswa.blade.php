@@ -10,24 +10,27 @@
 
     #pfp {
         /* display: block; */
-        max-width: 100%;
+        max-width: 75%;
         height: auto;
         width: auto;
+        border: 3px solid #000;
     }
 </style>
 @extends('templateAdmin')
 
 @section('admin')
     <h1 class="fw-bold text-center mt-3" id="judul">Data siswa</h1>
-    <div class="container m-5 d-flex justify-content-center">
+    <div class="container-md m-5 d-flex justify-content-center">
+        <div class="col-md-4 text-center align-items-center mt-5">
         @if (isset($user->foto_profil))
-            <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="rounded float-start img-responsive"
+            <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="img-thumbnail img-responsive rounded-circle"
                 id="pfp" alt="Foto Profil" width="100">
         @else
             <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
         @endif
-        <div class="container-fluid d-flex justify-content-center">
-            <div class="col-md-6 ms-5 mt-5">
+        </div>
+        {{-- <div class="container-fluid d-flex justify-content-center"> --}}
+            <div class="col-md-6 mt-5">
                 <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59"
                     placeholder="Nama siswa" style="border-color: black;" readonly>
                 <br>
@@ -43,10 +46,10 @@
                 <input type="text" value="{{ $user->teacher ? $user->teacher->nama : '' }}"
                     class="form-control form-control-lg h-59" style="border-color: black;" readonly>
                 <br>
-                <div class="position-relative text-center" style="width: 350px;">
-                    <a href="{{ route('admin.data_siswa') }}" class="btn btn-light position-absolute pull-right"
+                <div class="col-md d-flex justify-content-center text-center" style="width: 100%;">
+                    <a href="{{ route('admin.data_siswa') }}" class="btn btn-light"
                         id="btnM">Kembali</a>
                 </div>
             </div>
-        </div>
+        {{-- </div> --}}
     @endsection
