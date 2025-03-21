@@ -23,9 +23,9 @@
                 <input type="text" class="form-control form-control-lg" placeholder="Judul Tugas"
                     style="border: 3px solid black;" name="judul">
                 <br>
-                <label for="file">File Tugas:</label>
                 <input type="file" class="form-control form-control-lg" 
                     style="border: 3px solid black;" name="file">
+                    <small>maksimal 2 mb</small>
                 <br>
                 <div class="container-md d-flex justify-content-center mt-5">
                  <button type="submit" class="btn btn-light fw-bold" id="submit">Kumpul</button>

@@ -91,7 +91,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Assignment::create([
-            'id_tasks' => '1',
+            'id_tasks' => '2',
             'id_users' => '2',
             'judul' => 'Pengumpulan Tugas 2'
         ]);
