@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,10 +18,19 @@ class AuthController extends Controller
             'password' => ['required']
         ]);
 
-        if(Auth::attempt($credentials)) {
+        if (Auth::guard('admin')->attempt($credentials)) {
             $request->session()->regenerate();
+            return redirect()->intended('admin/home');
+        }
 
-            return redirect()->intended('siswa/home');
+        if (Auth::guard('teacher')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('pembimbing/home');
+        }
+        
+        if (Auth::guard('web')->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect()->intended('siswa/home');        
         }
 
         return back()->withErrors(['Akun tidak  terdaftar, silahkan coba lagi.'])->onlyInput('email');
