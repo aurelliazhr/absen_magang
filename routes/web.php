@@ -47,9 +47,8 @@ Route::middleware('teacher')->group(function () {
 
         Route::get('/home', [GuruController::class, 'index'])->name('guru.home');
         Route::get('/lihat_siswa/{id}', [GuruController::class, 'lihat'])->name('guru.lihat_siswa');
-        Route::get('/profil', function () {
-            return view('pembimbing/profil');
-        });
+        Route::get('profil', [GuruController::class, 'profil'])->name('guru.profil');
+        Route::put('profil_proses', [GuruController::class, 'profil_proses'])->name('guru.profil_proses');
 
         Route::get('/tugas', [GuruController::class, 'tugas'])->name('guru.tugas');
         Route::get('/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');

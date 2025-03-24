@@ -6,10 +6,13 @@ use App\Models\Assignment;
 use App\Models\Score;
 use App\Models\Task;
 use App\Models\User;
+use App\Models\Teacher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class GuruController extends Controller
@@ -22,6 +25,55 @@ class GuruController extends Controller
             ->paginate(10);
 
         return view('pembimbing.home', compact('users'));
+    }
+
+    function profil()
+    {
+        $user = Auth::guard('teacher')->user();
+        $users = $user->id;
+
+        return view('pembimbing.profil', compact('user', 'users'));
+    }
+
+    function profil_proses(Request $request)
+    {
+        $user = Auth::guard('teacher')->user();
+
+        $validator = Validator::make($request->all(), [
+            'foto_profil' => 'nullable|mimes:png,jpg,jpeg|max:2048',
+            'nama' => 'required',
+            'email' => 'sometimes|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|min:5',
+        ]);
+
+        if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
+
+        $user->nama = $request->nama;
+
+        if ($request->hasFile('foto_profil')) {
+            $foto_profil = $request->file('foto_profil');
+            $filename = date('YmdHis') . '_' . $foto_profil->getClientOriginalName();
+            $path = 'profil-user/' . $filename;
+
+            if ($user->foto_profil && Storage::disk('public')->exists('profil-user/' . $user->foto_profil)) {
+                Storage::disk('public')->delete('profil-user/' . $user->foto_profil);
+            }
+
+            Storage::disk('public')->put($path, file_get_contents($foto_profil));
+            $user->foto_profil = $filename;
+        }
+
+        if ($request->has('email') && !empty($request->email)) {
+            $user->email = $request->email;
+        }
+
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+
+        $user->save();
+
+        return redirect()->route('guru.profil', $user->id)->with('success', 'Data siswa berhasil diperbarui!');
     }
 
     public function lihat($id)
@@ -90,7 +142,7 @@ class GuruController extends Controller
             'id_teachers' => $user->id,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'file' => $filename, 
+            'file' => $filename,
             'batas_pengumpulan' => $request->batas_pengumpulan
         ]);
 

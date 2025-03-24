@@ -28,7 +28,7 @@
                     <a class="nav-link active" href="{{route('guru.home')}}" style="color: white;">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/pembimbing/profil" style="color: white;">Profil</a>
+                    <a class="nav-link active" href="{{route('guru.profil')}}" style="color: white;">Profil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link active" href="{{route('guru.tugas')}}" style="color: white;">Tugas</a>
