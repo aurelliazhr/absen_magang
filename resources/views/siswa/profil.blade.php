@@ -9,7 +9,6 @@
     }
 
     #pfp {
-        /* display: block; */
         max-width: 75%;
         height: auto;
         width: auto;

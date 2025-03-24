@@ -23,14 +23,16 @@
             <textarea class="form-control form-control-lg" placeholder="Deskripsi Tugas" value="{{ $tugas->deskripsi }}"
                 style="border: 3px solid black;">{{ $tugas->deskripsi }}</textarea>
             <br>
+            <div>
             @if (!empty($tugas->file))
-                <a href="{{ route('siswa.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
-                    rel="noopener noreferrer">
+                <a class="form-control form-control-lg" href="{{ route('siswa.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
+                    rel="noopener noreferrer" style="border: 3px solid black">
                     {{ $tugas->file }}
                 </a>
             @else
-                <input type="text" placeholder="Tidak Ada File Tugas" readonly>
+                <input class="form-control form-control-lg" type="text" placeholder="Tidak Ada File Tugas" readonly style="border: 3px solid black">
             @endif
+            </div>
             <br>
             <input type="text" class="form-control form-control-lg"
                 value="{{ \Carbon\Carbon::parse($tugas->batas_pengumpulan)->format('d M Y H:i') }}"

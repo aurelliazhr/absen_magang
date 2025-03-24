@@ -40,15 +40,6 @@
             margin-top: 60px;
             padding-right: 100px;
         }
-
-        #masuk {
-            /* display: flex;
-            height: 100px;
-            width: 100%
-            font-size: 18px;
-            font-weight: 500; */
-
-        }
     </style>
 </head>
 
@@ -58,7 +49,6 @@
         <div class="container-md m-5 d-flex justify-content-center align-items-start gap-5">
             <div class="col-md-4 text-center align-items-center mt-5 me-3 ms-5">
                 <img src="/assets/logo.png" class="img-responsive rounded float-start" id="logo">
-                {{-- <h1 class="fw-bold text-center" id="judul">Absen Magang</h1> --}}
             </div>
             <div class="col-md-6 justify-content-center text-center ms-5" id="form">
                 <h1 class="fw-bold text-center" id="judul">Absen Magang</h1>

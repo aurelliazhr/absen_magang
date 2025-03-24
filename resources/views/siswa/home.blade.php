@@ -31,6 +31,7 @@
         /* width: 10%; */
         height: 100%;
         font-size: 30px;
+        text-align: center
     }
 
     #jurnal {
@@ -56,13 +57,13 @@
 
             <div class="col-md-5 d-grid text-center">
                 @if ($user->absen_datang == 0)
-                    <div class="col-md-5 d-grid text-center">
-                        <a href="#" type="button" class="btn btn-success fw-bold" id="tugas">Tugas</a>
-                    </div>
+                    {{-- <div class="col-md-5 d-grid text-center"> --}}
+                        <a href="#" type="button" class="btn btn-success fw-bold" id="tugas" style="cursor: no-drop;">Tugas</a>
+                    {{-- </div> --}}
                 @else
-                    <div class="col-md-5 d-grid text-center">
+                    {{-- <div class="col-md-5 d-flex text-center"> --}}
                         <a href="/siswa/tugas" type="button" class="btn btn-success fw-bold" id="tugas">Tugas</a>
-                    </div>
+                    {{-- </div> --}}
                 @endif
             </div>
 
@@ -103,32 +104,6 @@
                         <button type="submit" class="btn btn-light fw-bold mt-3" id="absen">Absen Datang</button>
                     </div>
                     </div>
-                        <div class="col-md-4">
-                            <div class="container-md d-flex justify-content-center gap-4">
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" style="border: 1px solid black;"
-                                        name="status" value="izin">
-                                    <label for="izin" class="form-check-label">Izin</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" style="border: 1px solid black;"
-                                        name="status" value="sakit">
-                                    <label for="sakit" class="form-check-label">Sakit</label>
-                                </div>
-                                <div class="form-check form-check-inline">
-                                    <input type="radio" class="form-check-input" style="border: 1px solid black;"
-                                        name="status" value="hadir">
-                                    <label for="hadir" class="form-check-label">Hadir</label>
-                                </div>
-                            </div>
-                            <div class="container-md d-flex flex-column align-items-center ms-2">
-                                <textarea name="keterangan" id="keterangan" class="form-control form-control-lg" placeholder="Keterangan"
-                                    style="border: 3px solid black;"></textarea>
-                                <br>
-                                <button type="submit" class="btn btn-light fw-bold mt-3" id="absen">Absen
-                                    Datang</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             @endif
@@ -177,42 +152,5 @@
             </div>
         </div>
     </div>
-    <!-- </div> -->
-    {{-- <!-- @if ($user->absen_datang == 1) --}}
-    {{-- <form action="{{ route('siswa.absen_pulang') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="container-md d-flex text-center justify-content-center align-items-center">
-                <div class="d-flex flex-column align-items-center" id="formH">
-                    <textarea name="keterangan" required id="" class="form-control form-control-lg"
-                        placeholder="Jurnal Kegiatan Harian" style="border: 3px solid black; height: 190px; width: 70%;"></textarea>
-                    <br>
-                    <button type="submit" class="btn btn-light fw-bold mt-3" id="absen" style="background-color: green">Absen Pulang</button>
-                </div>
-                </div>
-            </form>
-        @endif --> --}}
 
-    <!-- <div class="col-md-6 mt-5 justify-content-center text-center">
-                                <h3 class="text-center fw-bold"><i class="bi bi-square-fill fs-4" id="kotak"></i> Riwayat Kegiatan</h3>
-                                <div class="container-md mt-3 p-3" style="height: 100%; overflow-y: auto;">
-                                    <ul class="list-group list-group-flush">
-                                        {{-- @foreach ($absents as $a)
-                        <li class="list-group-item fw-bold" id="history">
-                            <i class="bi bi-clock" style="-webkit-text-stroke: 1px;"></i>
-                            @if ($a->status == 'hadir')
-                                Anda {{ $a->kategori ?? 'hadir' }} pada {{ $a->created_at->format('d M Y H:i') }}
-                            @elseif ($a->status == 'sakit' || $a->status == 'izin')
-                                Anda {{ $a->status }} pada {{ $a->created_at->format('d M Y H:i') }}
-                            @endif
-                            @foreach ($assignments as $as)
-                        <li class="list-group-item fw-bold" id="history">
-                            <i class="bi bi-clock" style="-webkit-text-stroke: 1px;"></i>
-                            Anda telah mengumpulkan "{{ $as->judul }}" pada {{ $as->created_at->format('d M Y H:i') }}
-                        </li>
-                    @endforeach
-                    </li>
-                    @endforeach --}}
-                                    </ul>
-                                </div>
-                            </div> -->
 @endsection
