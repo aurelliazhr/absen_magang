@@ -22,7 +22,7 @@
                     </small>
                 <br>
 
-                <input type="text" class="form-control form-control-lg" name="batas_pengumpulan"
+                <input type="datetime" class="form-control form-control-lg" name="batas_pengumpulan"
                     placeholder="Batas Pengumpulan" style="border-color: black;"
                     value="{{ old('batas_pengumpulan', $task->batas_pengumpulan) }}" required>
                 <br>

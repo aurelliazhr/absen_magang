@@ -196,6 +196,8 @@ class GuruController extends Controller
         $task = Task::findOrFail($id);
 
         if ($task) {
+            Score::whereIn('id_assignments', Assignment::where('id_tasks', $id)->pluck('id'))->delete();
+            Assignment::where('id_tasks', $id)->delete();
             $task->delete();
         }
 
@@ -214,30 +216,37 @@ class GuruController extends Controller
 
     function detail_pengumpulan($id)
     {
+        $user = Auth::guard('teacher')->user();
         $tugas = Assignment::with('user', 'score')->findOrFail($id);
 
-        return view('pembimbing.detail_pengumpulan', compact('tugas'));
+        return view('pembimbing.detail_pengumpulan', compact('tugas', 'user'));
     }
 
     function nilai(Request $request)
     {
 
         $validator = Validator::make($request->all(), [
-            // 'id_teachers' => 'required',
             'nilai' => 'required',
-            'catatan' => 'required'
+            'catatan' => 'required',
+            'id_users' => 'required',
+            'id_tasks' => 'required',
+            'id_assignments' => 'required'
         ]);
 
         if ($validator->fails()) {
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        // $user = Auth::guard('teacher')->user();
+
         Score::create([
-            // 'id_teachers' => $request->id_teachers,
+            'id_users' => $request->id_users,
+            'id_tasks' => $request->id_tasks,
+            'id_assignments' => $request->id_assignments,
             'nilai' => $request->nilai,
             'catatan' => $request->catatan
         ]);
 
-        return redirect()->route('guru.pengumpulan')->with('success', 'Siswa berhasil ditambahkan!');
+        return redirect()->route('guru.tugas')->with('success', 'Siswa berhasil ditambahkan!');
     }
 }

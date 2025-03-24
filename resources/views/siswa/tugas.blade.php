@@ -18,8 +18,18 @@
                         <td>{{ $t->judul }}</td>
                         <td><a href="{{ route('siswa.detail_tugas', $t->id) }}" class="active" style="color: #231F20"><i
                                     class="bi bi-info-circle fs-4"></i></a></td>
-                        <td><a href="{{ route('siswa.pengumpulan', ['id' => $t->id]) }}" class="active"
-                                style="color: #231F20;"><i class="bi bi-file-earmark-check fs-4"></i></a></td>
+                        <td>
+                            @if (now()->lessThan(Carbon\Carbon::parse($t->batas_pengumpulan)))
+                                <a href="{{ route('siswa.pengumpulan', ['id' => $t->id]) }}" class="active"
+                                    style="color: #231F20;">
+                                    <i class="bi bi-file-earmark-check fs-4"></i>
+                                </a>
+                            @else
+                                <span class="text-danger">
+                                    <i class="bi bi-x-circle fs-4"></i>
+                                </span>
+                            @endif
+                        </td>
                         <td><a href="{{ route('siswa.nilai', ['id' => $t->id]) }}" class="active" style="color: #FEFE12;"><i
                                     class="bi bi-star-fill fs-4"></i></a></td>
                     </tr>

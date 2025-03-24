@@ -38,12 +38,14 @@
                 placeholder="Judul Tugas" style="border-color: black;">
             <br>
             @if (!empty($tugas->file))
-                <a href="{{ route('siswa.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
-                    rel="noopener noreferrer">
+                <a class="form-control form-control-lg shadow-none"
+                    href="{{ route('guru.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
+                    rel="noopener noreferrer" style="border: 3px solid black">
                     {{ $tugas->file }}
                 </a>
             @else
-                <input type="text" placeholder="Tidak Ada File" readonly>
+                <input class="form-control form-control-lg shadow-none" type="text" placeholder="Tidak Ada File Tugas"
+                    readonly style="border: 3px solid black">
             @endif
             <br>
             <input type="text" class="form-control form-control-lg" value="{{ $tugas->updated_at }}" readonly
@@ -52,16 +54,22 @@
 
             <form action="{{ route('guru.nilai') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+
+                <input type="hidden" name="id_users" value="{{ $tugas->id_users }}">
+                <input type="hidden" name="id_tasks" value="{{ $tugas->id_tasks }}">
+                <input type="hidden" name="id_assignments" value="{{ $tugas->id }}">
+
                 <textarea class="form-control form-control-lg" value="{{ $tugas->score->catatan ?? 'Catatan' }}" name="catatan"
-                    placeholder="Catatan" style="border-color: black;"></textarea>
+                    placeholder="Catatan" style="border-color: black;">{{ $tugas->score->catatan ?? 'Catatan' }}</textarea>
                 <br>
-                <input type="text" class="form-control form-control-lg" name="nilai" min="0" max="100"
-                    value="{{ old('nilai', $tugas->score->nilai ?? '') }}" placeholder="Nilai" style="border-color: black;">
+                <input type="text" class="form-control form-control-lg" name="nilai"
+                    value="{{ old('nilai', $tugas->score->nilai ?? '') }}" placeholder="Nilai"
+                    style="border-color: black;">
                 <br>
                 <div class="container-md d-flex justify-content-between align-items-center text-center gap-4"
                     style="margin-bottom: 2%;" id="Bform">
                     <button type="submit" class="btn btn-light fw-bold" id="simpan">Simpan</button>
-                    <a href="{{ route('guru.pengumpulan', $tugas->id) }}" type="button" class="btn btn-light fw-bold"
+                    <a href="{{ route('guru.tugas') }}" type="button" class="btn btn-light fw-bold"
                         id="back">Kembali</a>
                 </div>
             </form>

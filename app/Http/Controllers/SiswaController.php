@@ -169,6 +169,10 @@ class SiswaController extends Controller
     {
         $tugas = Task::findOrFail($id);
 
+        if (now()->greaterThan($tugas->batas_pengumpulan)) {
+            return redirect()->back();
+        }
+
         $user = Auth::user();
 
         return view('siswa.pengumpulan', compact('user', 'tugas'));

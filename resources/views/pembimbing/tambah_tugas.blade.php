@@ -23,12 +23,6 @@
         <h1 class="fw-bold text-center" id="judul">Tambah Tugas</h1>
         <div class="container  d-flex justify-content-center align-items-center" id="Gform">
             <div class="col-md-6" id="form">
-                {{-- <input type="text" id="id_teachers" name="id_teachers" placeholder="ID Teachers"
-                    class="form-control form-control-lg" style="border-color: black;">
-                @error('judul')
-                    <small>Judul tugas harus diisi</small>
-                @enderror
-                <br> --}}
 
                 <input type="text" id="judul" name="judul" placeholder="Judul Tugas"
                     class="form-control form-control-lg" style="border-color: black;">
