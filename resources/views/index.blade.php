@@ -60,7 +60,7 @@
                     placeholder="Masukkan Kata Sandi" required>
                 <br>
                 <div class="col-md d-flex justify-content-center text-center mt-5">
-                    <button type="submit" class="btn btn-light w-50 h-100 p-1 fw-bold fs-3" id="masuk">Masuk</button>
+                    <button type="submit" class="btn btn-light w-50 h-100 p-1 fs-3" id="masuk">Masuk</button>
                 </div>
             </div>
         </div>

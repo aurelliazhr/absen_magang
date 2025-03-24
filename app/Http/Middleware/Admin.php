@@ -15,12 +15,18 @@ class Admin
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next)
+
     {
-        // Cek apakah user sudah login dan apakah user adalah admin
-        // if (Auth::check() && Auth::user()->role === 'admin') {
-        //     return redirect()->route('admin.home');
-        // }
-        
-        return $next($request);
+
+            $user = Auth::guard('admin')->user();
+
+            if ($user) {
+
+                return $next($request);
+
+            }
+
+        return redirect('/')->with('error', 'You do not have admin access.');
+
     }
 }

@@ -42,25 +42,27 @@ Route::middleware('admin')->group(function () {
 });
 
 //Pembimbing
-Route::prefix('pembimbing')->group(function () {
+Route::middleware('teacher')->group(function () {
+    Route::prefix('pembimbing')->group(function () {
 
-    Route::get('/home', [GuruController::class, 'index'])->name('guru.home');
-    Route::get('/lihat_siswa/{id}', [GuruController::class, 'lihat'])->name('guru.lihat_siswa');
-    Route::get('/profil', function () {
-        return view('pembimbing/profil');
+        Route::get('/home', [GuruController::class, 'index'])->name('guru.home');
+        Route::get('/lihat_siswa/{id}', [GuruController::class, 'lihat'])->name('guru.lihat_siswa');
+        Route::get('/profil', function () {
+            return view('pembimbing/profil');
+        });
+
+        Route::get('/tugas', [GuruController::class, 'tugas'])->name('guru.tugas');
+        Route::get('/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
+        Route::get('/lihat_file/{file}', [GuruController::class, 'lihat_file'])->name('guru.lihat_file');
+        Route::get('/tambah_tugas', [GuruController::class, 'tambah_tugas'])->name('guru.tambah_tugas');
+        Route::post('/tambah_tugas-proses', [GuruController::class, 'tambah_tugas_proses'])->name('guru.tambah_tugas_proses');
+        Route::get('/edit_tugas/{id}', [GuruController::class, 'edit_tugas'])->name('guru.edit_tugas');
+        Route::put('/edit_tugas_proses/{id}', [GuruController::class, 'edit_tugas_proses'])->name('guru.edit_tugas_proses');
+        Route::delete('/hapus_tugas/{id}', [GuruController::class, 'hapus_tugas'])->name('guru.hapus_tugas');
+        Route::get('/pengumpulan/{id}', [GuruController::class, 'pengumpulan'])->name('guru.pengumpulan');
+        Route::get('/detail_pengumpulan/{id}', [GuruController::class, 'detail_pengumpulan'])->name('guru.detail_pengumpulan');
+        Route::post('nilai', [GuruController::class, 'nilai'])->name('guru.nilai');
     });
-
-    Route::get('/tugas', [GuruController::class, 'tugas'])->name('guru.tugas');
-    Route::get('/detail/{id}', [GuruController::class, 'detail'])->name('guru.detail');
-    Route::get('/lihat_file/{file}', [GuruController::class, 'lihat_file'])->name('guru.lihat_file');
-    Route::get('/tambah_tugas', [GuruController::class, 'tambah_tugas'])->name('guru.tambah_tugas');
-    Route::post('/tambah_tugas-proses', [GuruController::class, 'tambah_tugas_proses'])->name('guru.tambah_tugas_proses');
-    Route::get('/edit_tugas/{id}', [GuruController::class, 'edit_tugas'])->name('guru.edit_tugas');
-    Route::put('/edit_tugas_proses/{id}', [GuruController::class, 'edit_tugas_proses'])->name('guru.edit_tugas_proses');
-    Route::delete('/hapus_tugas/{id}', [GuruController::class, 'hapus_tugas'])->name('guru.hapus_tugas');
-    Route::get('/pengumpulan/{id}', [GuruController::class, 'pengumpulan'])->name('guru.pengumpulan');
-    Route::get('/detail_pengumpulan/{id}', [GuruController::class, 'detail_pengumpulan'])->name('guru.detail_pengumpulan');
-    Route::post('nilai', [GuruController::class, 'nilai'])->name('guru.nilai');
 });
 
 //Siswa

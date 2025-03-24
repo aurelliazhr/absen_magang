@@ -16,10 +16,14 @@ class Teacher
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(!Auth::guard('teacher')->check()) {
-        //     return redirect('/pembimbing/home');
-        // }
+        $user = Auth::guard('teacher')->user();
 
-        return $next($request);
+            if ($user) {
+
+                return $next($request);
+
+            }
+
+            return redirect('/')->with('error', 'You do not have admin access.');
     }
 }
