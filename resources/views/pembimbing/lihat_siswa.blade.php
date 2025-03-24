@@ -28,16 +28,16 @@
         @endif
         </div>
         <div class="col-md-6 mt-5">
-            <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59"
+            <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59 shadow-none"
                 placeholder="Nama siswa" style="border-color: black;" readonly>
             <br>
-            <input type="text" value="{{ $user->email }}" class="form-control form-control-lg h-59"
+            <input type="text" value="{{ $user->email }}" class="form-control form-control-lg h-59 shadow-none"
                 placeholder="Email Siswa" style="border-color: black;" readonly>
             <br>
-            <input type="text" value="{{ $user->jenis_kelamin }}" class="form-control form-control-lg h-59"
+            <input type="text" value="{{ $user->jenis_kelamin }}" class="form-control form-control-lg h-59 shadow-none"
                 placeholder="masukkan kata sandi" style="border-color: black;" readonly>
             <br>
-            <input type="text" value="{{ $user->asal_sekolah }}" class="form-control form-control-lg h-59"
+            <input type="text" value="{{ $user->asal_sekolah }}" class="form-control form-control-lg h-59 shadow-none"
                 placeholder="nama sekolah" style="border-color: black;" readonly>
             <br>
             <div class="position-relative text-center" style="width: 58%;">

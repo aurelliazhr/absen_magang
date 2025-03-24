@@ -17,24 +17,24 @@
     <h1 class="fw-bold text-center mt-5">Detail tugas</h1>
     <div class="container-md d-flex justify-content-center align-items-center" id="Pform">
         <div class="col-md-6">
-            <input type="text" class="form-control form-control-lg" placeholder="Judul Tugas" value="{{ $tugas->judul }}"
-                style="border: 3px solid black;">
+            <input type="text" class="form-control form-control-lg shadow-none" placeholder="Judul Tugas" value="{{ $tugas->judul }}"
+                style="border: 3px solid black;" readonly>
             <br>
-            <textarea class="form-control form-control-lg" placeholder="Deskripsi Tugas" value="{{ $tugas->deskripsi }}"
-                style="border: 3px solid black;">{{ $tugas->deskripsi }}</textarea>
+            <textarea class="form-control form-control-lg shadow-none" placeholder="Deskripsi Tugas" value="{{ $tugas->deskripsi }}"
+                style="border: 3px solid black;" readonly>{{ $tugas->deskripsi }}</textarea>
             <br>
             <div>
             @if (!empty($tugas->file))
-                <a class="form-control form-control-lg" href="{{ route('siswa.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
+                <a class="form-control form-control-lg shadow-none" href="{{ route('siswa.lihat_file', ['file' => $tugas->file]) }}" target="_blank"
                     rel="noopener noreferrer" style="border: 3px solid black">
                     {{ $tugas->file }}
                 </a>
             @else
-                <input class="form-control form-control-lg" type="text" placeholder="Tidak Ada File Tugas" readonly style="border: 3px solid black">
+                <input class="form-control form-control-lg shadow-none" type="text" placeholder="Tidak Ada File Tugas" readonly style="border: 3px solid black">
             @endif
             </div>
             <br>
-            <input type="text" class="form-control form-control-lg"
+            <input type="text" class="form-control form-control-lg shadow-none"
                 value="{{ \Carbon\Carbon::parse($tugas->batas_pengumpulan)->format('d M Y H:i') }}"
                 placeholder="Batas Pengumpulan" style="border: 3px solid black;" readonly>
             <br>

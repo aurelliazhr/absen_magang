@@ -19,9 +19,9 @@
 <div class="container d-flex justify-content-center" id="Gform">
   <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara" style="width: 300px;">
   <div class="col-md-6 ms-3 mt-5">
-      <input type="text" class="form-control form-control-lg h-59" value="{{ $teacher->nama }}" placeholder="Nama Pembimbing" style="border-color: black;" id="nama">
+      <input type="text" class="form-control form-control-lg h-59 shadow-none" value="{{ $teacher->nama }}" placeholder="Nama Pembimbing" style="border-color: black;" id="nama" readonly>
       <br>
-      <input type="email" class="form-control form-control-lg h-59" value="{{ $teacher->email }}" placeholder="Email Pembimbing" style="border-color: black;" id="email">
+      <input type="email" class="form-control form-control-lg h-59 shadow-none" value="{{ $teacher->email }}" placeholder="Email Pembimbing" style="border-color: black;" id="email" readonly>
       <br>
       <div class="container-fluid d-flex text-center justify-content-center">
        <div class="col-md text-center justify-content-center">
