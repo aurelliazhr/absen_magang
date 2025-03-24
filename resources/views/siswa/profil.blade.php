@@ -27,6 +27,8 @@
                 @if (isset($user->foto_profil))
                     <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}"
                         class="img-thumbnail img-responsive rounded-circle" id="pfp" alt="Foto Profil" width="100">
+                @else
+                    <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
                 @endif
 
                 <div class="d-flex justify-content-center mt-3 gap-3">

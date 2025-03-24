@@ -190,7 +190,7 @@ class SiswaController extends Controller
 
         if ($request->hasFile('file')) {
             $file = $request->file('file');
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName() . time() . '.' . $file->getClientOriginalExtension();
             $file->move(public_path('file'), $filename);
         }
 

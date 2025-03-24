@@ -11,6 +11,7 @@ class Teacher extends Authenticatable
     protected $fillable = [
         'nama',
         'email',
-        'password'
+        'password',
+        'foto_profil'
     ];
 }

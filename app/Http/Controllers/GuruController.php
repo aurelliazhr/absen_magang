@@ -8,6 +8,7 @@ use App\Models\Task;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Validator;
 
@@ -15,7 +16,10 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $users = User::orderBy('nama', 'asc')->paginate(10);
+        $user = Auth::guard('teacher')->user();
+        $users = User::where('id_teachers', $user->id)
+            ->orderBy('nama', 'asc')
+            ->paginate(10);
 
         return view('pembimbing.home', compact('users'));
     }
@@ -39,7 +43,10 @@ class GuruController extends Controller
 
     public function tugas()
     {
-        $tasks = Task::orderBy('id', 'desc')->paginate(10);
+        $user = Auth::guard('teacher')->user();
+        $tasks = Task::where('id_teachers', $user->id)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
 
         return view('pembimbing.tugas', compact('tasks'));
     }
@@ -53,16 +60,16 @@ class GuruController extends Controller
 
     public function tambah_tugas()
     {
-        return view('pembimbing.tambah_tugas');
+        $user = Auth::guard('teacher')->user();
+        return view('pembimbing.tambah_tugas', compact('user'));
     }
 
     public function tambah_tugas_proses(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            // 'id_teachers' => 'required',
             'judul' => 'required',
             'deskripsi' => 'required',
-            'file' => 'nullable',
+            'file' => 'nullable|max:2048',
             'batas_pengumpulan' => 'required'
         ]);
 
@@ -70,11 +77,20 @@ class GuruController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        if ($request->hasFile('file')) {
+
+            $file = $request->file;
+            $filename = $file->getClientOriginalName() . time() . '.' . $file->getClientOriginalExtension();
+            $request->file->move('file', $filename);
+        }
+
+        $user = Auth::guard('teacher')->user();
+
         Task::create([
-            // 'id_teachers' => $request->id_teachers,
+            'id_teachers' => $user->id,
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
-            'file' => $request->file,
+            'file' => $filename, 
             'batas_pengumpulan' => $request->batas_pengumpulan
         ]);
 
@@ -110,7 +126,7 @@ class GuruController extends Controller
             }
 
             $file = $request->file;
-            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $filename = $file->getClientOriginalName() . time() . '.' . $file->getClientOriginalExtension();
             $request->file->move('file', $filename);
 
             $task->file = $filename;
