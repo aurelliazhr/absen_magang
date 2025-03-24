@@ -31,20 +31,20 @@
         </div>
         {{-- <div class="container-fluid d-flex justify-content-center"> --}}
             <div class="col-md-6 mt-5">
-                <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59"
+                <input type="text" value="{{ $user->nama }}" class="form-control form-control-lg h-59 shadow-none"
                     placeholder="Nama siswa" style="border-color: black;" readonly>
                 <br>
-                <input type="text" value="{{ $user->email }}" class="form-control form-control-lg h-59"
+                <input type="text" value="{{ $user->email }}" class="form-control form-control-lg h-59 shadow-none"
                     placeholder="Email Siswa" style="border-color: black;" readonly>
                 <br>
-                <input type="text" value="{{ $user->jenis_kelamin }}" class="form-control form-control-lg h-59"
+                <input type="text" value="{{ $user->jenis_kelamin }}" class="form-control form-control-lg h-59 shadow-none"
                     placeholder="masukkan kata sandi" style="border-color: black;" readonly>
                 <br>
-                <input type="text" value="{{ $user->asal_sekolah }}" class="form-control form-control-lg h-59"
+                <input type="text" value="{{ $user->asal_sekolah }}" class="form-control form-control-lg h-59 shadow-none"
                     placeholder="SMKN 2 Banjarmasin" style="border-color: black;" readonly>
                 <br>
                 <input type="text" value="{{ $user->teacher ? $user->teacher->nama : '' }}"
-                    class="form-control form-control-lg h-59" style="border-color: black;" readonly>
+                    class="form-control form-control-lg h-59 shadow-none" style="border-color: black;" readonly>
                 <br>
                 <div class="col-md d-flex justify-content-center text-center" style="width: 100%;">
                     <a href="{{ route('admin.data_siswa') }}" class="btn btn-light"
