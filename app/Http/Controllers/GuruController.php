@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Absent;
 use App\Models\Assignment;
 use App\Models\Score;
 use App\Models\Task;
 use App\Models\User;
 use App\Models\Teacher;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
@@ -82,6 +84,54 @@ class GuruController extends Controller
 
         return view('pembimbing.lihat_siswa', compact('user'));
     }
+
+    public function jurnal(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $absents = Absent::where('id_users', $id)
+            ->where('kategori', 'pulang')
+            ->orderBy('updated_at', 'desc')
+            ->get();
+
+        // Cari absen "datang" pada hari yang sama
+        foreach ($absents as $pulang) {
+            $datang = Absent::where('id_users', $id)
+                ->where('kategori', 'datang')
+                ->whereDate('created_at', $pulang->updated_at->toDateString())
+                ->first();
+
+            // Ambil jam masuk
+            if ($datang) {
+                $pulang->jam_masuk = \Carbon\Carbon::parse($datang->created_at)->format('H:i');
+            } else {
+                $pulang->jam_masuk = '-';
+            }
+
+            // Ambil jam pulang 
+            $pulang->jam_keluar = \Carbon\Carbon::parse($pulang->updated_at)->format('H:i');
+
+            // Hitung lama waktu kerja
+            if ($datang) {
+                $jamDatang = \Carbon\Carbon::parse($datang->created_at);
+                $jamPulang = \Carbon\Carbon::parse($pulang->updated_at);
+                $totalMenit = $jamDatang->diffInMinutes($jamPulang);
+                $jam = floor($totalMenit / 60);
+                $menit = $totalMenit % 60;
+                $pulang->lama_waktu = $jam . ' Jam ' . $menit . ' Menit';
+            } else {
+                $pulang->lama_waktu = '-';
+            }
+        }
+
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('jurnal', ['user' => $user, 'absents' => $absents]);
+            return $pdf->stream('Jurnal_' . $user->name . '.pdf');
+        }
+
+        return view('jurnal', compact('absents', 'user'));
+    }
+
     public function lihat_file($file)
     {
         $filePath = public_path('file/' . $file);

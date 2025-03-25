@@ -8,6 +8,7 @@ use App\Models\Score;
 use App\Models\Task;
 use App\Models\Teacher;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Validator;
 class SiswaController extends Controller
 {
 
-    function home()
+    function home(Request $request)
     {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
@@ -27,6 +28,23 @@ class SiswaController extends Controller
 
         return view('siswa.home', compact('absents', 'user', 'assignments'));
     }
+
+    public function jurnal(Request $request) {
+        $userId = Auth::id();
+        $user = User::findOrFail($userId);
+        $absents = Absent::where('id_users', $userId)
+                         ->where('kategori', 'pulang') // Filter hanya kategori "pulang"
+                         ->orderBy('created_at', 'desc')
+                         ->paginate(10);
+    
+        if ($request->get('export') == 'pdf') {
+            $pdf = Pdf::loadView('siswa.jurnal', ['user' => $user, 'absents' => $absents]);
+            return $pdf->stream('Jurnal.pdf');
+        }
+    
+        return view('siswa.jurnal', compact('absents', 'user'));
+    }
+    
 
 
     function absen_datang(Request $request)

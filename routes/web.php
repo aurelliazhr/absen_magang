@@ -22,6 +22,7 @@ Route::middleware('admin')->group(function () {
         Route::get('/tambah_siswa', [AdminController::class, 'tambah_siswa'])->name('admin.tambah_siswa');
         Route::post('/tambah_siswa-proses', [AdminController::class, 'tambah_siswa_proses'])->name('admin.tambah_siswa_proses');
         Route::get('/data_siswa', [AdminController::class, 'data_siswa'])->name('admin.data_siswa');
+        Route::get('/jurnal/{id}', [AdminController::class, 'jurnal'])->name('admin.jurnal');
         Route::get('/edit_siswa/{id}', [AdminController::class, 'edit_siswa'])->name('admin.edit_siswa');
         Route::put('/edit_siswa_proses/{id}', [AdminController::class, 'edit_siswa_proses'])->name('admin.edit_siswa_proses');
         Route::get('/lihat_siswa/{id}', [AdminController::class, 'lihat_siswa'])->name('admin.lihat_siswa');
@@ -47,6 +48,7 @@ Route::middleware('teacher')->group(function () {
 
         Route::get('/home', [GuruController::class, 'index'])->name('guru.home');
         Route::get('/lihat_siswa/{id}', [GuruController::class, 'lihat'])->name('guru.lihat_siswa');
+        Route::get('/jurnal/{id}', [GuruController::class, 'jurnal'])->name('guru.jurnal');
         Route::get('profil', [GuruController::class, 'profil'])->name('guru.profil');
         Route::put('profil_proses', [GuruController::class, 'profil_proses'])->name('guru.profil_proses');
 
@@ -68,6 +70,7 @@ Route::middleware('teacher')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::prefix('siswa')->group(function () {
         Route::get('/home', [SiswaController::class, 'home'])->name('siswa.home');
+        Route::get('/jurnal', [SiswaController::class, 'jurnal'])->name('siswa.jurnal');
         Route::post('/absen_datang', [SiswaController::class, 'absen_datang'])->name('siswa.absen_datang');
         Route::post('/absen_pulang', [SiswaController::class, 'absen_pulang'])->name('siswa.absen_pulang');
 

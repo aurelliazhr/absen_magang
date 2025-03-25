@@ -68,7 +68,7 @@
             </div>
 
             <div class="col-md-5 d-grid text-center">
-                <a href="" type="button" class="btn btn-success fw-bold" id="jurnal"><i
+                <a href="{{route('siswa.jurnal')}}?export=pdf" type="button" class="btn btn-success fw-bold" id="jurnal"><i
                         class="bi bi-download"></i> Jurnal</a>
             </div>
         </div>
