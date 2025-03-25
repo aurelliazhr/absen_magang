@@ -28,14 +28,49 @@
     }
 
     #tugas {
-        /* width: 10%; */
+        width: auto;
         height: 100%;
         font-size: 30px;
         text-align: center
     }
 
+    @media screen and (max-width : 776px) and (min-width : 480px) {
+        #tugas{
+            width: 300px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #jurnal{
+            width: 100px;
+            /* margin-left: 50px; */
+        }
+        #formH{
+            /* background: purple; */
+        }
+        .absen{
+            width: 37%;
+            /* height: 30%; */
+            /* background-color: green; */
+        }
+        .pulang{
+            width: 37%;
+        }
+        #pl{
+            margin-left: 55px;
+        }
+        #hadir{
+            margin-left: 55px;
+        }
+        #Rform{
+            width: 350px;
+            height: 40px;
+        }
+    }
+
     #jurnal {
-        /* width: 10%; */
+        width: auto;
         height: 100%;
         font-size: 30px;
         text-align: center;
@@ -52,10 +87,10 @@
 @extends('templateSiswa')
 
 @section('siswa')
-    <div class="container mt-3">
-        <div class="row d-flex justify-content-center align-items-center gap-5">
+    {{-- <div class="container mt-3"> --}}
+        <div class="row-sm d-flex justify-content-center align-items-center gap-5 mt-3">
 
-            <div class="col-md-5 d-grid text-center">
+            <div class="col-sm-5 d-grid text-center">
                 @if ($user->absen_datang == 0)
                     {{-- <div class="col-md-5 d-grid text-center"> --}}
                         <a href="#" type="button" class="btn btn-success fw-bold" id="tugas" style="cursor: no-drop;">Tugas</a>
@@ -72,15 +107,15 @@
                         class="bi bi-download"></i> Jurnal</a>
             </div>
         </div>
-    </div>
+    {{-- </div> --}}
     <div class="container-fluid d-flex justify-content-center text-center gap-5" id="formH">
-        <form action="{{ route('siswa.absen_datang') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('siswa.absen_datang') }}" method="POST" enctype="multipart/form-data" class="absen">
             @csrf
             @if ($user->absen_datang == 0)
-                <div class="container mt-5" name="status">
+                <div class="container mt-5" name="status" id="hadir">
                     <div class="row justify-content-center">
-                    <div class="col-md-4">
-                    <div class="container-md d-flex justify-content-center gap-4 ms-3">
+                    <div class="col-sm-4">
+                    <div class="container-sm d-flex justify-content-center gap-4 ms-3">
                     <div class="form-check form-check-inline d-flex align-items-center">
                         <input type="radio" class="form-check-input" style="border: 1px solid black;" name="status"
                             value="izin">
@@ -97,7 +132,7 @@
                         <label for="hadir" class="form-check-label">Hadir</label>
                     </div>
                     </div>
-                    <div class="container-md d-flex flex-column align-items-center ms-3">
+                    <div class="container-sm d-flex flex-column align-items-center ms-3">
                         <textarea name="keterangan" id="keterangan" class="form-control form-control-lg" placeholder="Keterangan"
                             style="border: 3px solid black;"></textarea>
                         <br>
@@ -109,11 +144,11 @@
             @endif
         </form>
         {{-- pulang --}}
-        <form action="{{ route('siswa.absen_pulang') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('siswa.absen_pulang') }}" method="POST" enctype="multipart/form-data" class="pulang">
             @if ($user->absen_datang == 1)
                 @csrf
-                <div class="container-md d-flex text-center justify-content-center align-items-center mt-5">
-                    <div class="container-md d-flex flex-column align-items-center align-items-center me-5" id="formH">
+                <div class="container-sm d-flex text-center justify-content-center align-items-center mt-5" id="pl">
+                    <div class="container-sm d-flex flex-column align-items-center align-items-center me-5" id="formH">
                         <textarea name="keterangan" required id="" class="form-control form-control-lg mt-5"
                             placeholder="Jurnal Kegiatan Harian" style="border: 3px solid black; height: 190px; width: 350px;"></textarea>
                         <br>
@@ -124,7 +159,7 @@
             @endif
         </form>
         {{-- riwayat --}}
-        <div class="col-md-4 gap-5 me-5" id="Rform">
+        <div class="col-sm-4 gap-5 me-5" id="Rform">
             <div class="card p-5 mt-5 ms-5">
                 <h3 class="text-center fw-bold"><i class="bi bi-square-fill fs-4" id="kotak"></i> Riwayat Kegiatan</h3>
                 <div class="overflow-auto" style="max-height: 250px;">
