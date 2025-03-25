@@ -7,12 +7,28 @@
         font-weight: bold;
         font-size: 20px;
     }
+    #btnK{
+        width: 160px;
+        height: 50px;
+        background-color: #1D0CD1;
+        color: #FFFFFF;
+        font-weight: bold;
+        font-size: 20px;
+    }
 
     #pfp {
-        max-width: 75%;
-        height: auto;
-        width: auto;
-        border: 3px solid #000;
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: inherit; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
+    }
+    #pfp2{
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: cover; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
     }
 </style>
 @extends('templateSiswa')
@@ -22,18 +38,18 @@
         @csrf
         @method('PUT')
         <h1 class="fw-bold text-center mt-3" id="judul">Profil siswa</h1>
-        <div class="container-md d-flex justify-content-center align-items-start gap-1 m-5">
+        <div class="container-md d-flex justify-content-center align-items-start gap-1 m-5 mt-1">
             <div class="col-md-4 text-center align-items-center mt-5">
                 @if (isset($user->foto_profil))
                     <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}"
-                        class="img-thumbnail img-responsive rounded-circle" id="pfp" alt="Foto Profil" width="100">
+                        class="img-fluid profile-picture mt-3" id="pfp" alt="Foto Profil" width="100">
                 @else
-                    <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
+                    <img src="https://www.gravatar.com/avatar/?d=mp&s=150" class="img-responsive rounded-circle" id="pfp2" alt="sementara">
                 @endif
 
                 <div class="d-flex justify-content-center mt-3 gap-3">
                     <button type="submit" class="btn btn-light" id="btnM">Simpan</button>
-                    <a href="{{ route('siswa.home') }}" class="btn btn-light" id="btnM">Kembali</a>
+                    <a href="{{ route('siswa.home') }}" class="btn btn-light" id="btnK">Kembali</a>
                 </div>
             </div>
             <div class="col-md-6 ms-5 mt-5">

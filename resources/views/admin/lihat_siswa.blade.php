@@ -9,11 +9,18 @@
     }
 
     #pfp {
-        /* display: block; */
-        max-width: 75%;
-        height: auto;
-        width: auto;
-        border: 3px solid #000;
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: inherit; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
+    }
+    #pfp2{
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: cover; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
     }
 </style>
 @extends('templateAdmin')
@@ -23,10 +30,10 @@
     <div class="container-md m-5 d-flex justify-content-center">
         <div class="col-md-4 text-center align-items-center mt-5">
         @if (isset($user->foto_profil))
-            <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="img-thumbnail img-responsive rounded-circle"
+            <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="img-fluid profile-picture mt-2"
                 id="pfp" alt="Foto Profil" width="100">
         @else
-            <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
+            <img src="https://www.gravatar.com/avatar/?d=mp&s=150" class="img-fluid rounded-circle mt-2" id="pfp2" alt="sementara">
         @endif
         </div>
         {{-- <div class="container-fluid d-flex justify-content-center"> --}}

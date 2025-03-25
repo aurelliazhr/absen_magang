@@ -12,6 +12,20 @@
     #Gform {
         margin-top: 5%;
     }
+    #pfp{
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: inherit; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
+    }
+    #pfp2{
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: cover; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
+    }
 </style>
 @extends('templateAdmin')
 
@@ -20,9 +34,9 @@
     <div class="container d-flex justify-content-center" id="Gform">
         @if (isset($teacher->foto_profil))
             <img src="{{ asset('storage/profil-user/' . $teacher->foto_profil) }}"
-                class="img-thumbnail img-responsive rounded-circle" id="pfp" alt="Foto Profil" width="100">
+                class="img-fluid profile-picture" id="pfp" alt="Foto Profil" width="100">
         @else
-            <img src="https://placehold.co/300x250" class="rounded float-start" id="logo" alt="sementara">
+            <img src="https://www.gravatar.com/avatar/?d=mp&s=150" class="img-fluid rounded-circle" id="pfp2" alt="sementara">
         @endif
         <div class="col-md-6 ms-3 mt-5">
             <input type="text" class="form-control form-control-lg h-59 shadow-none" value="{{ $teacher->nama }}"

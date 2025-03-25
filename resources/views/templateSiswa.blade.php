@@ -34,7 +34,7 @@
                 </li>
                 <li class="nav-item">
                     @if ($user->absen_datang == 0)
-                        <a class="nav-link active" style="color: white">Tugas</a>
+                        <a class="nav-link active" style="color: white; cursor: no-drop;">Tugas</a>
                     @else
                         <a class="nav-link active" href="{{ route('siswa.tugas') }}" style="color: white;">Tugas</a>
                     @endif

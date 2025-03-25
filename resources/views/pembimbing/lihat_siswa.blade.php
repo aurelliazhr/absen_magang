@@ -8,10 +8,18 @@
         font-size: 20px;
     }
     #pfp{
-        max-width: 75%;
-        height: auto;
-        width: auto;
-        border: 3px solid #000;
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: inherit; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
+    }
+    #pfp2{
+        width: 330px; /* Atur ukuran bingkai */
+        height: 330px; /* Atur ukuran bingkai */
+        object-fit: cover; 
+        border-radius: 50%; /* Membuat foto bulat */
+        border: 4px solid #000; 
     }
 </style>
 @extends('templateGuru')
@@ -21,10 +29,10 @@
     <div class="container-md m-5 d-flex justify-content-center">
         <div class="col-md-4 text-center align-items-center mt-3">
         @if (isset($user->foto_profil))
-            <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="img-thumbnail img-responsive rounded-circle"
+            <img src="{{ asset('storage/profil-user/' . $user->foto_profil) }}" class="img-fluid profile-picture mt-4"
                 id="pfp" alt="Foto Profil">
         @else
-            <img src="https://placehold.co/300x250" class="img-thumbnail img-responsive rounded-circle" id="logo" alt="sementara">
+            <img src="https://www.gravatar.com/avatar/?d=mp&s=150" class="img-responsive rounded-circle" id="pfp2" alt="sementara">
         @endif
         </div>
         <div class="col-md-6 mt-5">
