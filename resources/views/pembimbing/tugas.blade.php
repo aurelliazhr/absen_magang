@@ -52,7 +52,7 @@
                 @empty
                     <tr>
                         <td colspan="4">
-                            <div class="alert alert-danger m-0">Data Pembimbing Belum Tersedia</div>
+                            <div class="alert alert-danger m-0">Belum Ada Tugas</div>
                         </td>
                     </tr>
                 @endforelse

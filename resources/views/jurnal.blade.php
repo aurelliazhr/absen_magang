@@ -49,7 +49,7 @@
                         <td>{{ $a->jam_masuk }}</td>
                         <td>{{ $a->jam_keluar }}</td>
                         <td>{{ $a->lama_waktu }}</td>
-                        <td>{{ $a->keterangan }}</td>
+                        <td>{{ $a->ket }}</td>
                     </tr>
                 @endforeach
             @else

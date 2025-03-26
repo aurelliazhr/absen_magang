@@ -59,12 +59,13 @@
                 <input type="hidden" name="id_tasks" value="{{ $tugas->id_tasks }}">
                 <input type="hidden" name="id_assignments" value="{{ $tugas->id }}">
 
-                <textarea class="form-control form-control-lg" value="{{ $tugas->score->catatan ?? 'Catatan' }}" name="catatan"
-                    placeholder="Catatan" style="border-color: black;">{{ $tugas->score->catatan ?? 'Catatan' }}</textarea>
-                <br>
                 <input type="text" class="form-control form-control-lg" name="nilai"
                     value="{{ old('nilai', $tugas->score->nilai ?? '') }}" placeholder="Nilai"
                     style="border-color: black;">
+                <br>
+
+                <textarea class="form-control form-control-lg" value="{{ $tugas->score->catatan ?? 'Catatan' }}" name="catatan"
+                    placeholder="Catatan" style="border-color: black;"></textarea>
                 <br>
                 <div class="container-md d-flex justify-content-between align-items-center text-center gap-4"
                     style="margin-bottom: 2%;" id="Bform">

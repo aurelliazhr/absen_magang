@@ -63,6 +63,8 @@
                 showCancelButton: true,
                 confirmButtonText: 'Ya',
                 cancelButtonText: 'Tidak',
+                confirmButtonColor: 'red',
+                cancelButtonColor: 'green',
                 customClass: {
                     title: 'custom-swal-title',
                     confirmButton: 'custom-button-logout',

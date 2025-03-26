@@ -179,6 +179,8 @@ class GuruController extends Controller
             return redirect()->back()->withInput()->withErrors($validator);
         }
 
+        $filename = null;
+        
         if ($request->hasFile('file')) {
 
             $file = $request->file;
