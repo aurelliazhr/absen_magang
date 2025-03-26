@@ -58,7 +58,7 @@ class AdminController extends Controller
             $pulang->jam_keluar = \Carbon\Carbon::parse($pulang->updated_at)->format('H:i');
 
             // Ambil jurnal
-            $pulang->ket = $pulang->keterangan;
+            $pulang->ket = wordwrap($pulang->keterangan, 30, "\n", true);
 
             // Hitung lama waktu kerja
             if ($datang) {

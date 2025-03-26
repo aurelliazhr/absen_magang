@@ -17,16 +17,36 @@
             border: 1px solid black;
             padding: 8px;
             text-align: center;
+            font-family: sans-serif;
         }
-
+        td{
+            word-break: keep-all;
+        }
         th {
-            background-color: #f2f2f2;
+            background-color: #51b3f5;
+            color: black;
+        }
+        img{
+            width: 5%;
+            height: auto;
+            object-fit: contain;
+            margin: 0;
+            padding: 0;
+            margin-right: 3%;   
+        }
+        h1{
+            margin: 0;
+            font-size: 25px;
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-family: Arial, Helvetica, sans-serif;
         }
     </style>
 </head>
 
 <body>
-    <h1>Jurnal Magang - {{ $user->nama }}</h1>
+    <h1><img src="assets/Logo.png" alt="logo" style="margin-top: 5px;"> Jurnal Magang - {{ $user->nama }}</h1>
     <hr>
 
     <table>

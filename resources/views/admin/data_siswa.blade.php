@@ -28,7 +28,7 @@
                 @forelse ($users as $u)
                     <tr class="table-group-divider">
                         <td>{{ $u->nama }}</td>
-                        <td><a href="{{route('admin.jurnal', ['id' => $u->id])}}?export=pdf">Jurnal</a></td>
+                        <td><a href="{{route('admin.jurnal', ['id' => $u->id])}}?export=pdf" style="color: #1D0CD1"><i class="bi bi-download fs-4"></i></a></td>
                         <td>
                             <a href="{{ route('admin.lihat_siswa', ['id' => $u->id]) }}" class="active"
                                 style="color: #231F20">
