@@ -1,23 +1,16 @@
 <style>
-    #btn1{
-        height: 80%;
-        width: 100%;
-        font-weight: bold;
-        font-size: 28px;
-    }
     #btn2{
-        height: 80%;
+        height: 85%;
         width: 100%;
         font-weight: bold;
-        font-size: 28px;
+        font-size: 30px;
     }
 </style>
 @extends('templateAdmin')
 
 @section('admin')
-    <div class="container-fluid px-4 d-flex justify-content-center" id="container1" style="text-align:center;">
-        <div class="col-md d-flex gap-5">
-            <a href="{{route('admin.rekap_siswa')}}" class="btn btn-success mt-4 text-nowrap" id="btn1">Rekap Data</a>
+    <div class="container-fluid d-flex justify-content-center" id="container1" style="text-align:center;">
+        <div class="col-md text-center justify-content-center">
             <a href="{{ route('admin.tambah_siswa') }}" class="btn btn-success mt-4 text-nowrap" id="btn2">Tambah Data</a>
         </div>
     </div>
