@@ -1,0 +1,305 @@
+<!-- note: Ini menggunakan bootstrap + native ^^ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Portofolio | Aurellia</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container {
+        margin-left: 20px;
+        padding: 20px;
+        border-radius: 5px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 250px;
+      }
+
+      .fade-in {
+        opacity: 0;
+        animation: fadeIn 2s ease-in forwards;
+      }
+
+      .card {
+        transition: all 0.3s;
+      }
+
+      .card:hover {
+        transform: scale(1.15);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="bg-secondary fade-in">
+    <div class="container bg-light border border-black">
+      <div class="column align-items-center" style="width: 250px; height: 85vh">
+        <div style="margin-top: 25px">
+          <img
+            src="Foto Profil.jpeg"
+            alt="Foto Profil"
+            class="rounded-circle img-fluid"
+            style="width: 150px; height: 150px"
+          />
+        </div>
+        <h6 class="display-4 fw-bold" style="font-size: 25px; margin-top: 25px">
+          Aurellia Az-Zahra
+        </h6>
+        <p class="lead" style="font-size: 18px">Siswa | Website Developer</p>
+
+        <p style="margin-top: 50px">
+          <strong><i class="fa-solid fa-location-dot"></i></strong> Jl. Soetoyo
+          S, Banjarmasin
+        </p>
+        <p>
+          <strong><i class="fa-solid fa-envelope"></i></strong>
+          anotheraurelll.com
+        </p>
+        <p>
+          <strong><i class="fa-solid fa-phone"></i></strong> 081250843560
+        </p>
+      </div>
+
+      <div class="kontak fade-in">
+        <a href="https://github.com/aurelliazhr"
+          ><i
+            class="fa-brands fa-github card"
+            style="color: black; font-size: 25px; margin-right: 10px"
+          ></i
+        ></a>
+        <a href="https://x.com/aurelambis?t=ijBXa1oBfHrUYxZESuQIwg&s=08"
+          ><i
+            class="fa-brands fa-x-twitter card"
+            style="color: black; font-size: 25px; margin-right: 10px"
+          ></i
+        ></a>
+        <a href="#"
+          ><i
+            class="fa-brands fa-instagram card"
+            style="color: black; font-size: 25px"
+          ></i
+        ></a>
+      </div>
+    </div>
+
+    <div class="baris2" style="height: 570px; margin-left: 10px">
+      <div class="bahasa">
+        <ul class="list-group border border-dark" style="width: 500px">
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span>HTML</span>
+              <span>80%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                role="progressbar"
+                style="width: 80%"
+                aria-valuenow="80"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span>CSS</span>
+              <span>80%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                role="progressbar"
+                style="width: 80%"
+                aria-valuenow="80"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span>JavaScript</span>
+              <span>30%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-warning"
+                role="progressbar"
+                style="width: 30%"
+                aria-valuenow="30"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span>Python</span>
+              <span>20%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
+                role="progressbar"
+                style="width: 20%"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span>PHP</span>
+              <span>40%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-info"
+                role="progressbar"
+                style="width: 40%"
+                aria-valuenow="40"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </li>
+
+          <li class="list-group-item">
+            <div class="d-flex justify-content-between">
+              <span>SQL</span>
+              <span>20%</span>
+            </div>
+            <div class="progress">
+              <div
+                class="progress-bar progress-bar-striped progress-bar-animated bg-secondary"
+                role="progressbar"
+                style="width: 20%"
+                aria-valuenow="20"
+                aria-valuemin="0"
+                aria-valuemax="100"
+              ></div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div
+        class="pendidikan bg-light border border-dark"
+        style="width: 500px; height: 220px; border-radius: 5px; margin-top: 5px"
+      >
+        <h3 class="text-center">Pendidikan</h3>
+        <hr />
+        <p class="text-center">
+          <i class="fas fa-school"></i> SD Muhammadiyah 8 Banjarmasin
+        </p>
+        <p class="text-center">
+          <i class="fas fa-school"></i> SMPN 2 Banjarmasin
+        </p>
+        <p class="text-center">
+          <i class="fas fa-school"></i> SMKN 2 Banjarmasin
+        </p>
+      </div>
+    </div>
+
+    <div
+      class="sertifikat bg-light border border-dark text-center"
+      style="border-radius: 5px; margin-left: 15px; height: 565px"
+    >
+      <h3>Sertifikat</h3>
+      <hr />
+      <img
+        src="Front-end.png"
+        class="card-sertif"
+        style="margin-bottom: 5px"
+        width="200px"
+        height="150px"
+      />
+      <img
+        src="Web Developer.png"
+        class="card-sertif"
+        style="margin-bottom: 5px"
+        width="200px"
+        height="150px"
+      />
+      <img
+        src="Rakit Komp.jpeg"
+        class="card-sertif"
+        width="200px"
+        height="150px"
+      />
+    </div>
+
+    <div>
+      <div
+        class="projek bg-light border border-dark text-center"
+        style="
+          border-radius: 5px;
+          margin-right: 25px;
+          margin-left: 10px;
+          width: 230px;
+          height: 565px;
+        "
+      >
+        <h3>Projek</h3>
+        <hr />
+        <p style="margin-top: 25px">
+          <i class="fa-solid fa-star"></i> MiniMinds
+        </p>
+        <img src="MiniMinds.jpeg" width="200px" height="100px" />
+        <p style="margin-top: 25px">
+          <i class="fa-solid fa-star"></i> UlunPintar
+        </p>
+        <img src="#" width="200px" height="100px" />
+        <p style="margin-top: 25px">
+          <i class="fa-solid fa-star"></i> Deteksi Spam
+        </p>
+        <img src="#" width="200px" height="100px" />
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

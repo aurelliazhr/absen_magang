@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absent;
+use App\Models\Assignment;
+use App\Models\Score;
+use App\Models\Task;
 use App\Models\Teacher;
 use App\Models\User;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -29,34 +32,41 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
 
         $absents = Absent::where('id_users', $id)
-            ->where('kategori', 'pulang')
+            ->where(function ($query) {
+                $query->where('kategori', 'pulang')
+                    ->orWhereIn('status', ['sakit', 'izin']);
+            })
+            // ->where('kategori', 'datang')
             ->orderBy('updated_at', 'desc')
             ->get();
 
-            // Cari absen "datang" pada hari yang sama
+        // Cari absen "datang" pada hari yang sama
         foreach ($absents as $pulang) {
             $datang = Absent::where('id_users', $id)
                 ->where('kategori', 'datang')
                 ->whereDate('created_at', $pulang->updated_at->toDateString())
                 ->first();
 
-                // Ambil jam masuk
+            // Ambil jam masuk
             if ($datang) {
                 $pulang->jam_masuk = \Carbon\Carbon::parse($datang->created_at)->format('H:i');
             } else {
-                $pulang->jam_masuk = '-'; 
+                $pulang->jam_masuk = '-';
             }
 
             // Ambil jam pulang 
             $pulang->jam_keluar = \Carbon\Carbon::parse($pulang->updated_at)->format('H:i');
+
+            // Ambil jurnal
+            $pulang->ket = $pulang->keterangan;
 
             // Hitung lama waktu kerja
             if ($datang) {
                 $jamDatang = \Carbon\Carbon::parse($datang->created_at);
                 $jamPulang = \Carbon\Carbon::parse($pulang->updated_at);
                 $totalMenit = $jamDatang->diffInMinutes($jamPulang);
-                $jam = floor($totalMenit / 60); 
-                $menit = $totalMenit % 60; 
+                $jam = floor($totalMenit / 60);
+                $menit = $totalMenit % 60;
                 $pulang->lama_waktu = $jam . ' Jam ' . $menit . ' Menit';
             } else {
                 $pulang->lama_waktu = '-';
@@ -164,6 +174,11 @@ class AdminController extends Controller
         $user = User::findOrFail($id);
 
         if ($user) {
+            Absent::where('id_users', $id)->delete();
+            Score::whereIn('id_assignments', function ($query) use ($id) {
+                $query->select('id')->from('assignments')->where('id_users', $id);
+            })->delete();
+            Assignment::where('id_users', $id)->delete();
             $user->delete();
         }
 
@@ -251,6 +266,20 @@ class AdminController extends Controller
         $teacher = Teacher::findOrFail($id);
 
         if ($teacher) {
+            Score::whereIn('id_assignments', function ($query) use ($id) {
+                $query->select('id')->from('assignments')
+                    ->whereIn('id_tasks', function ($subQuery) use ($id) {
+                        $subQuery->select('id')->from('tasks')->where('id_teachers', $id);
+                    });
+            })->delete();
+            Assignment::whereIn('id_tasks', function ($query) use ($id) {
+                $query->select('id')->from('tasks')->where('id_teachers', $id);
+            })->delete();
+            Task::where('id_teachers', $id)->delete();
+            Absent::whereIn('id_users', function ($query) use ($id) {
+                $query->select('id')->from('users')->where('id_teachers', $id);
+            })->delete();
+            User::where('id_teachers', $id)->delete();
             $teacher->delete();
         }
 
