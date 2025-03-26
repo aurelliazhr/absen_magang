@@ -14,8 +14,8 @@
             <a type="button" href="{{ route('admin.tambah_guru') }}" class="btn btn-success mt-4 text-nowrap" id="btn1">Tambah Data</a>
         </div>
     </div>
-    <small>note: menghapus data guru bisa menghapus data siswa bimbingannya</small>
-    <div class="table-responsive container mt-5 d-flex justify-content-center">
+    <small class="container-sm mt-4 d-flex justify-content-start">catatan: menghapus data guru bisa menghapus data siswa bimbingannya</small>
+    <div class="table-responsive container mt-4 d-flex justify-content-center">
         <table class="table text-center">
             <tbody>
                 @forelse ($teachers as $t)
