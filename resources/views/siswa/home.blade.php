@@ -34,20 +34,17 @@
         text-align: center
     }
 
-    @media screen and (max-width : 776px) and (min-width : 480px) {
+    @media screen and (max-width : 776px){
         #tugas{
             width: 300px;
-            margin-left: 10px;
+            /* margin-left: 10px; */
             display: flex;
             align-items: center;
             justify-content: center;
         }
         #jurnal{
-            width: 100px;
+            width: 300px;
             /* margin-left: 50px; */
-        }
-        #formH{
-            /* background: purple; */
         }
         .absen{
             width: 37%;
@@ -68,6 +65,40 @@
             height: 40px;
         }
     }
+    @media screen and (max-width : 876px){
+        #tugas{
+            width: 300px;
+            margin-left: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #jurnal{
+            width: 100px;
+            /* margin-left: 50px; */
+        }
+        .absen{
+            width: 37%;
+            /* height: 30%; */
+            /* background-color: green; */
+        }
+        .pulang{
+            width: 37%;
+        }
+        #pl{
+            margin-left: 55px;
+        }
+        #hadir{
+            margin-left: 55px;
+        }
+        #Rform{
+            width: 350px;
+            height: 40px;
+        }
+        #formH{
+            margin
+        }
+    }
 
     #jurnal {
         width: auto;
@@ -81,14 +112,12 @@
         width: 350px;
         margin-top: 10px;
     }
-
-    #formH {}
 </style>
 @extends('templateSiswa')
 
 @section('siswa')
     {{-- <div class="container mt-3"> --}}
-        <div class="row-sm d-flex justify-content-center align-items-center gap-5 mt-3">
+        <div class="row-sm d-flex justify-content-center align-items-center gap-5 mt-3" id="Bform">
 
             <div class="col-sm-5 d-grid text-center">
                 @if ($user->absen_datang == 0)

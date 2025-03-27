@@ -51,6 +51,19 @@
             align-items: center;
             white-space: nowrap;
         }
+
+        @media screen and (max-width : 776px){
+            table{
+                width: 40%;
+            }
+            th,
+            td{
+                border: 1px solid black;
+                padding: 5px;
+                text-align: center;
+                font-family: sans-serif;
+            }
+        }
     </style>
 </head>
 
