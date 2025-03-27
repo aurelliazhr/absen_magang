@@ -29,23 +29,22 @@ class SiswaController extends Controller
         return view('siswa.home', compact('absents', 'user', 'assignments'));
     }
 
-    public function jurnal(Request $request) {
+    public function jurnal(Request $request)
+    {
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         $absents = Absent::where('id_users', $userId)
-                         ->where('kategori', 'pulang') // Filter hanya kategori "pulang"
-                         ->orderBy('created_at', 'desc')
-                         ->paginate(10);
-    
+            ->where('kategori', 'pulang') // Filter hanya kategori "pulang"
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
         if ($request->get('export') == 'pdf') {
             $pdf = Pdf::loadView('siswa.jurnal', ['user' => $user, 'absents' => $absents]);
             return $pdf->stream('Jurnal.pdf');
         }
-    
+
         return view('siswa.jurnal', compact('absents', 'user'));
     }
-    
-
 
     function absen_datang(Request $request)
     {
@@ -59,6 +58,17 @@ class SiswaController extends Controller
         }
 
         $userId = Auth::id();
+        $today = now()->toDateString();
+
+        // Cek apakah pengguna sudah absen pulang hari ini
+        $alreadyCheckedOut = Absent::where('id_users', $userId)
+            ->whereDate('created_at', $today)
+            ->where('kategori', 'pulang')
+            ->exists();
+
+        if ($alreadyCheckedOut) {
+            return redirect()->back()->with('error', 'Anda sudah absen pulang hari ini, tidak bisa absen lagi.');
+        }
 
         Absent::create([
             'id_users' => $userId,
@@ -72,9 +82,9 @@ class SiswaController extends Controller
             User::where('id', $userId)->update(['absen_datang' => false]);
         }
 
-
-        return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
+        return redirect()->route('siswa.home')->with('success', 'Absen datang berhasil!');
     }
+
 
     function absen_pulang(Request $request)
     {
@@ -87,6 +97,17 @@ class SiswaController extends Controller
         }
 
         $userId = Auth::id();
+        $today = now()->toDateString();
+
+        // Cek apakah pengguna sudah absen pulang hari ini
+        $alreadyCheckedOut = Absent::where('id_users', $userId)
+            ->whereDate('created_at', $today)
+            ->where('kategori', 'pulang')
+            ->exists();
+
+        if ($alreadyCheckedOut) {
+            return redirect()->back()->with('error', 'Anda sudah absen pulang hari ini.');
+        }
 
         Absent::create([
             'id_users' => $userId,
@@ -95,11 +116,11 @@ class SiswaController extends Controller
             'kategori' => 'pulang'
         ]);
 
-        // session()->forget('sudah_absen_datang');
         User::where('id', $userId)->update(['absen_datang' => false]);
 
-        return redirect()->route('siswa.home')->with('success', 'Siswa berhasil ditambahkan!');
+        return redirect()->route('siswa.home')->with('success', 'Absen pulang berhasil!');
     }
+
 
     public function profil(Request $request, $id)
     {
