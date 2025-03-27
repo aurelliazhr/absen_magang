@@ -51,6 +51,17 @@
                 margin-right: 5%;
             }
         }
+        @media screen and (max-width : 987px){
+            #logo{
+                margin-top: 55%;
+                width: 90%;
+                height: auto;
+            }
+            #form{
+                padding-right: 50px;
+                margin-right: 5%;
+            }
+        }
     </style>
 </head>
 

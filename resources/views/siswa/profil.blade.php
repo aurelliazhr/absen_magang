@@ -53,7 +53,7 @@
             height: auto;
         }
     }
-    @media screen and (max-width : 876px){
+    @media screen and (max-width : 987px){
         #pfp{
             width: 100%;
             height: auto;

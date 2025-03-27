@@ -65,7 +65,7 @@
             height: 40px;
         }
     }
-    @media screen and (max-width : 876px){
+    @media screen and (max-width : 987px){
         #tugas{
             width: 300px;
             margin-left: 10px;

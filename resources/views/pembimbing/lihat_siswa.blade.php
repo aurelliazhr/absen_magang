@@ -35,7 +35,7 @@
             height: 260px;
         }
     }
-    @media screen and (max-width : 876px){
+    @media screen and (max-width : 987px){
         #pfp2{
             border: 4px solid #000;
             margin-right: 50px;
