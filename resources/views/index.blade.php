@@ -40,6 +40,17 @@
             margin-top: 60px;
             padding-right: 100px;
         }
+        @media screen and (max-width : 776px){
+            #logo{
+                margin-top: 55%;
+                width: 90%;
+                height: auto;
+            }
+            #form{
+                padding-right: 50px;
+                margin-right: 5%;
+            }
+        }
     </style>
 </head>
 
@@ -50,7 +61,7 @@
             <div class="col-md-4 text-center align-items-center mt-5 me-3 ms-5">
                 <img src="/assets/logo.png" class="img-responsive rounded float-start" id="logo">
             </div>
-            <div class="col-md-6 justify-content-center text-center ms-5" id="form">
+            <div class="col-md-6 justify-content-center text-center ms-2" id="form">
                 <h1 class="fw-bold text-center" id="judul">Absen Magang</h1>
                 <br>
                 <input type="email" name="email" class="form-control form-control-lg" placeholder="Masukkan Email"
@@ -59,7 +70,7 @@
                 <input type="password" name="password" id="pass" class="form-control form-control-lg"
                     placeholder="Masukkan Kata Sandi" required>
                 <br>
-                <div class="col-md d-flex justify-content-center text-center mt-5">
+                <div class="col-md d-flex justify-content-center text-center mt-4">
                     <button type="submit" class="btn btn-light w-50 h-100 p-1 fs-3" id="masuk">Masuk</button>
                 </div>
             </div>

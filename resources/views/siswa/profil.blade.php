@@ -30,6 +30,51 @@
         border-radius: 50%; /* Membuat foto bulat */
         border: 4px solid #000; 
     }
+
+    @media screen and (max-width : 776px) and (min-width : 680px) {
+        #pfp{
+            width: 100%;
+            height: auto;
+            object-fit: inherit;
+            border-radius: 50%;
+            border: 4px solid #000;
+            margin-bottom: 50px;
+        }
+        #pfp2{
+            width: 100%;
+            height: auto;
+            object-fit: inherit;
+            border-radius: 50%;
+            border: 4px solid #000;
+            margin-bottom: 50px;
+        }
+        #form{
+            width: 45%;
+            height: auto;
+        }
+    }
+    @media screen and (max-width : 876px){
+        #pfp{
+            width: 100%;
+            height: auto;
+            object-fit: inherit;
+            border-radius: 50%;
+            border: 4px solid #000;
+            margin-bottom: 50px;
+        }
+        #pfp2{
+            width: 100%;
+            height: auto;
+            object-fit: inherit;
+            border-radius: 50%;
+            border: 4px solid #000;
+            margin-bottom: 50px;
+        }
+        #form{
+            width: 45%;
+            height: auto;
+        }
+    }
 </style>
 @extends('templateSiswa')
 
@@ -52,16 +97,16 @@
                     <a href="{{ route('siswa.home') }}" class="btn btn-light" id="btnK">Kembali</a>
                 </div>
             </div>
-            <div class="col-md-6 ms-5 mt-5">
+            <div class="col-md-6 ms-5 mt-5" id="form">
                 <input type="file" class="form-control form-control-lg h-59" placeholder="Nama Siswa" value=""
                     name="foto_profil" style="border-color: black;">
                 <small>Upload foto profil baru jika ingin menggantinya</small>
                 <br>
-                <input type="text" class="form-control form-control-lg" name="nama" placeholder="Nama Siswa"
+                <input type="text" class="form-control form-control-lg shadow-none" name="nama" placeholder="Nama Siswa"
                     style="border-color: black;" value="{{ old('nama', $user->nama) }}" readonly required>
                 <br>
 
-                <input type="email" class="form-control form-control-lg" name="email" placeholder="Email Siswa"
+                <input type="email" class="form-control form-control-lg shadow-none" name="email" placeholder="Email Siswa"
                     style="border-color: black;" value="{{ old('email', $user->email) }}" readonly>
                 <br>
 
@@ -81,7 +126,7 @@
                 <input type="hidden" name="jenis_kelamin" value="{{ $user->jenis_kelamin }}">
                 <br>
 
-                <input type="text" class="form-control form-control-lg" name="asal_sekolah" placeholder="Asal Sekolah"
+                <input type="text" class="form-control form-control-lg shadow-none" name="asal_sekolah" placeholder="Asal Sekolah"
                     style="border-color: black;" value="{{ old('asal_sekolah', $user->asal_sekolah) }}" readonly required>
                 <br>
 
