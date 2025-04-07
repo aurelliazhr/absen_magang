@@ -121,7 +121,6 @@ class SiswaController extends Controller
         return redirect()->route('siswa.home')->with('success', 'Absen pulang berhasil!');
     }
 
-
     public function profil(Request $request, $id)
     {
         $user = User::findOrFail($id);
