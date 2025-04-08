@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Absent extends Model
 {
-    protected $fillable = [
-        'id_users',
-        'status',
-        'keterangan',
-        'kategori',
-        'created_at'
+    protected $table = 'absents';
+
+    protected $guarded = [
+        'id',
+        'created_at',
+        'updated_at'
     ];
 }

@@ -17,11 +17,10 @@ return new class extends Migration
                 table: 'users',
                 indexName: 'absents_users_id'
             );
-            $table->timestamps();
             $table->enum('status', ['alpa', 'hadir', 'sakit', 'izin'])->default('alpa');
             $table->text('keterangan')->nullable();
             $table->enum('kategori', ['datang', 'pulang'])->default('datang');
-
+            $table->timestamps();
         });
     }
 

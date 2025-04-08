@@ -40,24 +40,28 @@
             margin-top: 60px;
             padding-right: 100px;
         }
-        @media screen and (max-width : 776px){
-            #logo{
+
+        @media screen and (max-width : 776px) {
+            #logo {
                 margin-top: 55%;
                 width: 90%;
                 height: auto;
             }
-            #form{
+
+            #form {
                 padding-right: 50px;
                 margin-right: 5%;
             }
         }
-        @media screen and (max-width : 987px){
-            #logo{
+
+        @media screen and (max-width : 987px) {
+            #logo {
                 margin-top: 55%;
                 width: 90%;
                 height: auto;
             }
-            #form{
+
+            #form {
                 padding-right: 50px;
                 margin-right: 5%;
             }
@@ -68,6 +72,7 @@
 <body>
     <form action="login" method="POST">
         @csrf
+        @method('post')
         <div class="container-md m-5 d-flex justify-content-center align-items-start gap-5">
             <div class="col-md-4 text-center align-items-center mt-5 me-3 ms-5">
                 <img src="/assets/logo.png" class="img-responsive rounded float-start" id="logo">

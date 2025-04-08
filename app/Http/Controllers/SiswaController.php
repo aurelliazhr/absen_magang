@@ -24,9 +24,11 @@ class SiswaController extends Controller
         $userId = Auth::id();
         $user = User::findOrFail($userId);
         $absents = Absent::where('id_users', $userId)->orderBy('created_at', 'desc')->paginate(10);
+        $currentAbsent = Absent::where('id_users', $userId)->orderBy('created_at', 'desc')->first();
         $assignments = Assignment::where('id_users', $userId)->orderBy('created_at', 'desc')->paginate(10);
+        $today = now()->toDateString();
 
-        return view('siswa.home', compact('absents', 'user', 'assignments'));
+        return view('siswa.home', compact('absents', 'user', 'currentAbsent', 'assignments', 'today'));
     }
 
     public function jurnal(Request $request)
@@ -76,11 +78,11 @@ class SiswaController extends Controller
             'keterangan' => $request->keterangan,
         ]);
 
-        User::where('id', $userId)->update(['absen_datang' => true]);
+        // User::where('id', $userId)->update(['absen_datang' => true]);
 
-        if (in_array($request->status, ['izin', 'sakit'])) {
-            User::where('id', $userId)->update(['absen_datang' => false]);
-        }
+        // if (in_array($request->status, ['izin', 'sakit'])) {
+        //     User::where('id', $userId)->update(['absen_datang' => false]);
+        // }
 
         return redirect()->route('siswa.home')->with('success', 'Absen datang berhasil!');
     }
@@ -103,10 +105,16 @@ class SiswaController extends Controller
         $alreadyCheckedOut = Absent::where('id_users', $userId)
             ->whereDate('created_at', $today)
             ->where('kategori', 'pulang')
-            ->exists();
+            ->first();
 
         if ($alreadyCheckedOut) {
-            return redirect()->back()->with('error', 'Anda sudah absen pulang hari ini.');
+            // return redirect()->back()->with('error', 'Anda sudah absen pulang hari ini.');
+            $alreadyCheckedOut->id_users = $userId;
+            $alreadyCheckedOut->status = 'hadir';
+            $alreadyCheckedOut->keterangan = $request->keterangan;
+            $alreadyCheckedOut->kategori = 'pulang';
+            $alreadyCheckedOut->save();
+            return redirect()->route('siswa.home')->with('success', 'Absen pulang berhasil!');
         }
 
         Absent::create([
@@ -120,6 +128,7 @@ class SiswaController extends Controller
 
         return redirect()->route('siswa.home')->with('success', 'Absen pulang berhasil!');
     }
+
 
     public function profil(Request $request, $id)
     {
