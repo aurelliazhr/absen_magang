@@ -2,13 +2,42 @@
 
 Absen Magang adalah sebuah website yang mempermudah siswa magang untuk melakukan absensi dan pengumpulan tugas yang diberikan oleh pembimbing. Dan juga guru pembimbing nantinya dapat dengan mudah memberikan tugas, nilai, dan melihat rekap kegiatan para siswa magang secara cepat dan efisien.
 
+---
+## FlowChart
 <div align="center">
 <img src="/public/assets/userflow.png" width="400">
 </div>
 
 ---
 ## Pengguna & Fitur Aplikasi
-<img src="/public/assets/Role.png" width="400">
+
+### 👤 Admin
+Admin memiliki akses penuh untuk mengelola data penting, seperti:
+
+- Mengelola data guru  
+- Mengelola data siswa  
+- Melihat rekap absensi siswa  
+
+### 👨‍🏫 Guru Pembimbing
+Guru memiliki kuasa untuk:
+
+- Mengedit profil  
+- Melihat profil siswa bimbingan  
+- Mengelola tugas magang  
+- Melihat pengumpulan tugas siswa  
+- Memberikan nilai pada tugas siswa  
+- Melihat rekap absensi siswa  
+
+### 🧑‍🎓 Siswa Magang
+Siswa memiliki akses untuk:
+
+- Mengedit profil  
+- Melakukan absen harian  
+- Melihat jurnal magang pribadi  
+- Mengakses tugas magang  
+- Mengumpulkan tugas dan menerima nilai  
+- Melihat riwayat absensi pribadi  
+- Melihat riwayat tugas pribadi  
 
 ---
 ## Tampilan Aplikasi
