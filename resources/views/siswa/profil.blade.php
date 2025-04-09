@@ -158,12 +158,12 @@
                 </select>
                 <br>
 
-                <small>posisi guru pembimbing</small>
+                {{-- <small class="fw-bold">posisi guru pembimbing</small> --}}
                 @foreach ($teachers as $teacher)
                     @if ($teacher->id == Auth::user()->id_teachers)
                         <input type="text" class="form-control form-control-lg shadow-none" name="posisi"
                             placeholder="Posisi Pembimbing" style="border-color: black;"
-                            value="{{ old('posisi', $teacher->posisi) }}" readonly required>
+                            value="Posisi Pembimbing: {{ old('posisi', $teacher->posisi) }}" readonly required>
                     @endif
                 @endforeach
 
