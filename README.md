@@ -9,7 +9,10 @@ Absen Magang adalah sebuah website yang mempermudah siswa magang untuk melakukan
 
 ## Tampilan Aplikasi
 
-<img src="/public/assets/login.png" width="400">
-<img src="/public/assets/absen.png" width="400">
-<img src="/public/assets/jurnal.png" width="400">
+<div style="text-align: center;">
+  <img src="/public/assets/login.png" width="400">
+  <img src="/public/assets/absen.png" width="400">
+  <img src="/public/assets/jurnal.png" width="400">
+</div>
+
 
