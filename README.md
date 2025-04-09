@@ -5,7 +5,7 @@ Absen Magang adalah sebuah website yang mempermudah siswa magang untuk melakukan
 <img src="/public/assets/userflow.png" width="400">
 
 ## Pengguna & Fitur Aplikasi
-<img src="/public/assets/role.png" width="400">
+<img src="/public/assets/Role.png" width="400">
 
 ## Tampilan Aplikasi
 
