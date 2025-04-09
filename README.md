@@ -12,7 +12,7 @@
 Absen Magang adalah sebuah website yang mempermudah siswa magang untuk melakukan absensi dan pengumpulan tugas yang diberikan oleh pembimbing. Dan juga guru pembimbing nantinya dapat dengan mudah memberikan tugas, nilai, dan melihat rekap kegiatan para siswa magang secara cepat dan efisien.
 
 ## FlowChart
-<img src="/public/assets/userflow.jpg">
+<img src="/public/assets/userflow.png" width="400">
 
 ## Laravel Sponsors
 
