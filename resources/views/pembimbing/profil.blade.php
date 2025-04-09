@@ -60,6 +60,9 @@
                     name="password" style="border-color: black;" id="pass">
                 <small>Ketik kata sandi baru jika ingin menggantinya</small>
                 <br>
+                <input type="text" class="form-control form-control-lg h-59 shadow-none" value="{{ $user->posisi }}"
+                    placeholder="Posisi Pembimbing" style="border-color: black;" id="posisi" name="posisi" readonly>
+                <br>
                 <div class="container-md d-flex justify-content-between align-items-center text-center mt-1 gap-3">
                     <button type="submit" class="btn btn-light " id="btnS">Simpan</button>
                     <br>

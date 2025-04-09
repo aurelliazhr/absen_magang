@@ -35,12 +35,14 @@ class DatabaseSeeder extends Seeder
 
         Teacher::create([
             'nama' => 'Guru Pembimbing 1',
+            'posisi' => 'Dosen Pengajar',
             'email' => 'guru1@gmail.com',
             'password' => Hash::make('guru')
         ]);
 
         Teacher::create([
             'nama' => 'Guru Pembimbing 2',
+            'posisi' => 'Staff Teknisi',
             'email' => 'guru2@gmail.com',
             'password' => Hash::make('guru')
         ]);

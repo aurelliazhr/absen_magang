@@ -43,6 +43,14 @@
                     <small>Kata sandi harus diisi dengan min. 5 karakter</small>
                 @enderror
                 <br>
+
+                <input type="text" id="posisi" name="posisi" placeholder="Posisi Pembimbing"
+                    class="form-control form-control-lg" style="border-color: black;">
+                @error('posisi')
+                    <small>Posisi harus diisi dengan max. 20 karakter</small>
+                @enderror
+                <br>
+
                 <div class="container-md text-center d-flex justify-content-center">
                  <div class="col-md d-flex justify-content-center">
                   <button type="submit" class="btn btn-light fw-bold" id="masuk">Tambah</button>

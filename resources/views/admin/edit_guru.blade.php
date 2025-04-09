@@ -23,13 +23,20 @@
                 <input type="text" value="{{ old('nama', $teacher->nama) }}" required name="nama" class="form-control form-control-lg"
                     placeholder="Nama pembimbing" id="nama" style="border-color: black;">
                 <br>
+
                 <input type="text" value="{{ old('email', $teacher->email) }}" required name="email" class="form-control form-control-lg"
                     placeholder="Email Pembimbing" style="border-color: black;">
                 <br>
+
                 <input type="password" class="form-control form-control-lg" name="password" placeholder="Kata Sandi Baru"
                     style="border-color: black;">
                 <small>Ketik kata sandi baru jika ingin menggantinya</small>
                 <br>
+
+                <input type="text" value="{{ old('posisi', $teacher->posisi) }}" required name="posisi" class="form-control form-control-lg"
+                    placeholder="Posisi Pembimbing" style="border-color: black;">
+                <br>
+
                <div class="container d-flex text-center justify-content-center mt-5">
                <div class="col-md d-flex justify-content-center">
                  <button type="submit" class="btn btn-light fw-bold" id="edit">Edit</button>

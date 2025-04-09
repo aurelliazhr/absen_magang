@@ -45,6 +45,9 @@
             <input type="email" class="form-control form-control-lg h-59 shadow-none" value="{{ $teacher->email }}"
                 placeholder="Email Pembimbing" style="border-color: black;" id="email" readonly>
             <br>
+            <input type="text" class="form-control form-control-lg h-59 shadow-none" value="{{ $teacher->posisi }}"
+                placeholder="Posisi Pembimbing" style="border-color: black;" id="posisi" readonly>
+            <br>
             <div class="container-fluid d-flex text-center justify-content-center">
                 <div class="col-md text-center justify-content-center">
                     <a href="{{ route('admin.data_guru') }}" type="button" class="btn btn-light"

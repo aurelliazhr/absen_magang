@@ -211,7 +211,8 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'nama' => 'required',
             'email' => 'required|email|unique:teachers,email',
-            'password' => 'required|min:5'
+            'password' => 'required|min:5',
+            'posisi' => 'required|max:20'
         ]);
 
         if ($validator->fails()) {
@@ -221,7 +222,8 @@ class AdminController extends Controller
         Teacher::create([
             'nama' => $request->nama,
             'email' => $request->email,
-            'password' => Hash::make($request->password)
+            'password' => Hash::make($request->password),
+            'posisi' => $request->posisi
         ]);
 
         return redirect()->route('admin.data_guru')->with('success', 'Siswa berhasil ditambahkan!');
@@ -242,6 +244,7 @@ class AdminController extends Controller
             'nama' => 'required',
             'email' => 'sometimes|email|unique:teachers,email,' . $id,
             'password' => 'nullable|min:5',
+            'posisi' => 'required|max:20'
         ]);
 
         if ($validator->fails()) return redirect()->back()->withInput()->withErrors($validator);
@@ -255,6 +258,8 @@ class AdminController extends Controller
         if ($request->filled('password')) {
             $teacher->password = Hash::make($request->password);
         }
+
+        $teacher->posisi = $request->posisi;
 
         $teacher->save();
 
